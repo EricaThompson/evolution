@@ -21,6 +21,12 @@ class Rock {
         ctx.drawImage(rock, this.x, this.y, 25, 15);
     }
 
+    // draw() {
+    //     const rock = GIF();
+    //     rock.load('ROCK.gif');
+    //     ctx.drawImage(rock, this.x, this.y, 25, 15);
+    // }
+
 }
 
 function handleRocks() {

@@ -6,6 +6,7 @@ class Tama {
         this.width = 20;
         this.height = 20;
         this.weight = .5;
+        this.radius = 25;
     }
 
     update(){
@@ -15,16 +16,18 @@ class Tama {
             this. vy = 1;
         } else {
             this.vy += this.weight;
-            this.vy *= .6;
+            this.vy *= .8;
             this.y += this.vy;
         }
 
-        if (this.y < 0 + this.height){
-            this.y = 0 + this.height;
-            this.vy = 0;
-        }
+        // stops from going over top
+        // if (this.y < 0 + this.height){
+        //     this.y = 0 + this.height;
+        //     this.vy = 0;
+        // }
 
-        if(spacePressed && this.y > this.height * 3) this.boost();             
+        if(spacePressed && this.y > this.height - 100)
+            this.boost();             
     }
 
     draw(){
