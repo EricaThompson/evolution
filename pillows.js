@@ -97,8 +97,11 @@ function handlePillows() {
                 pillowArray[i].counted = true;
                 pillowArray.splice(i, 1)
             }
-            // (console.log(score))
-            // pillowArray.slice(pillowArray[i])
+
+            setTimeout(() => {
+                rest--
+            },10000)
+    
         }
     }
 }

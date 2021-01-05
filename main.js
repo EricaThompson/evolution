@@ -50,6 +50,8 @@ function animate(){
 }
 animate();
 
+
+
 window.addEventListener('keydown', function(e){
     if (e.code === "Space") spacePressed = true;
 })
@@ -59,8 +61,8 @@ window.addEventListener('keyup', function (e) {
     if (e.code === "Space") spacePressed = false;
 })
 
-const bang = new Image();
-bang.src = 'star.png';
+const star = new Image();
+star.src = 'star.png';
 
 function handleCollisions(){
     for (let i = 0; i < obstaclesArray.length; i++){
@@ -68,7 +70,7 @@ function handleCollisions(){
             ((tama.y < 0 + obstaclesArray[i].top && tama.y + tama.height > 0) ||
                 (tama.y > canvas.height - obstaclesArray[i].bottom &&
                     tama.y + tama.height < canvas.height))){
-                        ctx.drawImage(bang, tama.x, tama.y, 50, 50);
+                        ctx.drawImage(star, tama.x, tama.y, 50, 50);
                         // ctx.font = '25px Georgia';
                         // ctx.fillStyle = 'black';
                         // ctx.fillText('Game Over, your score is ' + score, 160, canvas.height/2 -10);
