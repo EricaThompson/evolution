@@ -9,6 +9,7 @@ let angle = 0;
 let hue = 0;
 let frame = 0;
 let rest = 0;
+let thirst = 0;
 let gamespeed = 2;
 
 // const gradient = ctx.createLinearGradient(0,0,0,70);
@@ -36,6 +37,7 @@ function animate(){
     // ctx.fillStyle = gradient;
     ctx.fillStyle = 'black';
     ctx.fillText('rest: ' + rest, 10, 50)
+    ctx.fillText('thirst: ' + thirst, 10, 70)
     // ctx. font = '90px Georgia';
     // ctx.strokeText(score, 450, 70)
     // ctx.fillText(score, 450, 70);

@@ -8,11 +8,14 @@ class Beverage {
         this.speed = Math.random() * 5 + 1;
         this.distance;
         this.color = 'hsla(' + hue + ', 100%, 50%, 0.8)';
-
+        this.counted = false;
     }
 
     update() {
         this.x -= this.speed;
+        const dx = this.x - tama.x;
+        const dy = this.y - tama.y;
+        this.distance = Math.sqrt(dx * dx + dy * dy)
     }
 
     draw() {
@@ -33,8 +36,24 @@ function handleBeverages() {
         beverageArray[i].draw();
     }
 
-    //to not have too many beverage for performance
+    //to not have too many beverages for performance
     if (beverageArray.length > 200) {
         beverageArray.pop(beverageArray[0])
+    }
+
+    for (let i = 0; i < beverageArray.length; i++) {
+        //collision
+        if (beverageArray[i].distance < beverageArray[i].radius + tama.radius) {
+            if (!beverageArray[i].counted) {
+                thirst++;
+                beverageArray[i].counted = true;
+                beverageArray.splice(i, 1)
+            }
+
+            setTimeout(() => {
+                thirst--
+            }, 10000)
+
+        }
     }
 }
