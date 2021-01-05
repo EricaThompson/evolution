@@ -8,8 +8,10 @@ let spacePressed = false;
 let angle = 0;
 let hue = 0;
 let frame = 0;
-let rest = 0;
-let thirst = 0;
+let rest = 25;
+let thirst = 25;
+let life = 100;
+let love = 25;
 let gamespeed = 2;
 
 // const gradient = ctx.createLinearGradient(0,0,0,70);
@@ -36,48 +38,39 @@ function animate(){
     handleRocks();
     // ctx.fillStyle = gradient;
     ctx.fillStyle = 'black';
-    ctx.fillText('rest: ' + rest, 10, 50)
-    ctx.fillText('thirst: ' + thirst, 10, 70)
-    // ctx. font = '90px Georgia';
-    // ctx.strokeText(score, 450, 70)
-    // ctx.fillText(score, 450, 70);
-    // handleCollisions();
-    // if (handleCollisions()) return;
+    ctx.fillText('life: ' + life, 10, 30)
+    ctx.fillText('rest: ' + rest, 10, 45)
+    ctx.fillText('thirst: ' + thirst, 10, 60)
     requestAnimationFrame(animate);
     // angle+=0.1;
     hue++;
     frame++;
+    decline();
     
 
 }
+
 animate();
-
-
 
 window.addEventListener('keydown', function(e){
     if (e.code === "Space") spacePressed = true;
 })
 
-
 window.addEventListener('keyup', function (e) {
     if (e.code === "Space") spacePressed = false;
 })
 
-const star = new Image();
-star.src = 'star.png';
 
-function handleCollisions(){
-    for (let i = 0; i < obstaclesArray.length; i++){
-        if (tama.x < obstaclesArray[i].x + obstaclesArray[i].width && tama.x + tama.width > obstaclesArray[i].x &&
-            ((tama.y < 0 + obstaclesArray[i].top && tama.y + tama.height > 0) ||
-                (tama.y > canvas.height - obstaclesArray[i].bottom &&
-                    tama.y + tama.height < canvas.height))){
-                        ctx.drawImage(star, tama.x, tama.y, 50, 50);
-                        // ctx.font = '25px Georgia';
-                        // ctx.fillStyle = 'black';
-                        // ctx.fillText('Game Over, your score is ' + score, 160, canvas.height/2 -10);
+function decline(){
+    if (frame % 500 === 0) {
+        rest--;
+    }
 
-                        return true;
-                    }
+    if (frame % 500 === 0) {
+        thirst--;
+    }
+
+    if (frame % 500 === 0) {
+        love--;
     }
 }

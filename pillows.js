@@ -9,6 +9,7 @@ class Pillow {
         this.distance;
         this.color = 'hsla(' + hue + ', 100%, 50%, 0.8)';
         this.counted = false;
+        
     }
 
     update() {
@@ -53,9 +54,9 @@ function handlePillows() {
                 pillowArray.splice(i, 1)
             }
 
-            setTimeout(() => {
-                rest--
-            },15000)
+            // setTimeout(() => {
+            //     rest += -1
+            // },15000)
     
         }
     }
