@@ -13,6 +13,7 @@ let thirst = 25;
 let life = 100;
 let love = 25;
 let gamespeed = 2;
+let feeling = '🙂';
 
 // const gradient = ctx.createLinearGradient(0,0,0,70);
 // gradient.addColorStop('0.4', '#fff');
@@ -37,15 +38,25 @@ function animate(){
     handleHearts();
     handleRocks();
     // ctx.fillStyle = gradient;
-    ctx.fillStyle = 'black';
-    ctx.fillText('life: ' + life, 10, 30)
-    ctx.fillText('rest: ' + rest, 10, 45)
-    ctx.fillText('thirst: ' + thirst, 10, 60)
+
+    //scorecard
+    ctx.fillStyle = 'white';
+    ctx.fillText(feeling + ' ' + life, 10, 30)
+    ctx.fillText('😴 ' + rest, 10, 45)
+    ctx.fillText('🚰 ' + thirst, 10, 60)
+    ctx.fillText('💌 ' + love, 10, 75)
+    ctx.fillText('evolve', 130, 13)
+    ctx.beginPath();
+    ctx.moveTo(120, 0);
+    ctx.lineTo(120, 80);
+    ctx.stroke();
+
     requestAnimationFrame(animate);
     // angle+=0.1;
     hue++;
     frame++;
     decline();
+    handleFeeling();
     
 
 }
@@ -61,6 +72,54 @@ window.addEventListener('keyup', function (e) {
 })
 
 
+function handleFeeling(){
+    //if statement is faster than switch
+    //else if doesn't work..
+    if (life < 90){
+        feeling = '🙃'
+    } 
+    
+    if (life < 80){
+        feeling = '😒'
+    }
+    
+    if (life < 70) {
+        feeling = '😶'
+    }
+    
+    if (life < 60) {
+        feeling = '😐'
+    }
+    
+    if (life < 50) {
+        feeling = '😧'
+    }
+    
+    if (life < 40) {
+        feeling = '😞'
+    }
+    
+    if (life < 30) {
+        feeling = '😓'
+    }
+    
+    if (life < 20) {
+        feeling = '😥'
+    }
+    
+    if (life < 10) {
+        feeling = '😭'
+    }
+    
+    if (life <= 0) {
+        feeling = '😪'
+    } else {
+
+    }
+
+
+}
+
 function decline(){
     if (frame % 500 === 0) {
         rest--;
@@ -72,5 +131,9 @@ function decline(){
 
     if (frame % 500 === 0) {
         love--;
+    }
+
+    if (frame % 500 === 0) {
+        life--;
     }
 }
