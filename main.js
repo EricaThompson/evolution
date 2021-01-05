@@ -30,6 +30,7 @@ function animate(){
     tama.draw();
     handleStars();
     handlePillows();
+    handleBeverages();
     ctx.fillStyle = gradient;
     // ctx. font = '90px Georgia';
     // ctx.strokeText(score, 450, 70)
