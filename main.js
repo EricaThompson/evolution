@@ -31,6 +31,8 @@ function animate(){
     handleStars();
     handlePillows();
     handleBeverages();
+    handleHearts();
+    handleRocks();
     ctx.fillStyle = gradient;
     // ctx. font = '90px Georgia';
     // ctx.strokeText(score, 450, 70)
