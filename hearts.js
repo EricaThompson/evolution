@@ -26,7 +26,7 @@ class Heart {
         // ctx.fill();
 
         const heart = new Image();
-        heart.src = 'HEART.png';
+        heart.src = '/src/images/HEART.png';
         ctx.drawImage(heart, this.x, this.y, canvas.height / 20, canvas.width / 30);
     }
 

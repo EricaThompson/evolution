@@ -38,7 +38,7 @@ class Tama {
         ctx.fill();
 
         const tama = new Image();
-        tama.src = 'ASTRONAUT.png';
+        tama.src = '/src/images/ASTRONAUT.png';
         ctx.drawImage(tama, this.x-40, this.y-50, 70 , 125);
 
     }

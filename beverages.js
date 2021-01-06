@@ -20,7 +20,7 @@ class Beverage {
 
     draw() {
         const beverage = new Image();
-        beverage.src = 'BEVERAGE.png';
+        beverage.src = '/src/images/BEVERAGE.png';
         ctx.drawImage(beverage, this.x, this.y, canvas.height / 20, 15);
     }
 

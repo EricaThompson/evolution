@@ -17,7 +17,7 @@ class Star {
 
     draw(){
         const bang = new Image();
-        bang.src = 'star.png';
+        bang.src = '/src/images/star.png';
         ctx.drawImage(bang, this.x, this.y, 30, 30);
     }
 

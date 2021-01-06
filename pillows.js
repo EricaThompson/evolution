@@ -20,7 +20,7 @@ class Pillow {
 
     draw() {
         const pillow = new Image();
-        pillow.src = 'PILLOW.png';
+        pillow.src = '/src/images/PILLOW.png';
         ctx.drawImage(pillow, this.x, this.y, canvas.height / 20, 15);
     }
 
