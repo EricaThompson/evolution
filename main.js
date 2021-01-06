@@ -32,7 +32,7 @@ let levelStarted = false;
 let gameOver = false;
 
 const gradient = ctx.createLinearGradient(0,0,150,0);
-gradient.addColorStop('0', '#002554');
+gradient.addColorStop('0', '#b6b09c');
 gradient.addColorStop('1', '#CFE3CB');
 // gradient.addColorStop('0.55', '#4040ff');
 // gradient.addColorStop('0.6', '#000');
@@ -80,6 +80,7 @@ function animate(){
     if (level === 0){
         handleHearts();
         handleStars();
+        handleLoveHelper();
     }
 
     if (level > 0){
@@ -100,6 +101,7 @@ function animate(){
         handleRocks();
         handleThirstHelper();
         handleRestHelper();
+        handleLoveHelper();
         ctx.fillStyle = gradient;
         ctx.fillText(feeling, 10, 30)
         ctx.fillText('😴 ', 10, 45)
@@ -109,7 +111,7 @@ function animate(){
         ctx.fillRect(25, 24, (life / 100) * 100, 5);
         ctx.fillStyle = gradient;
         handleHealthHelper();
-        handleLoveHelper();
+        
     }
 
     

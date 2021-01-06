@@ -6,7 +6,7 @@ class Tama {
         this.width = canvas.width / 30;
         this.height = canvas.height / 20;
         this.weight = .5;
-        this.radius = 10;
+        this.radius = 8;
     }
 
     update(){
@@ -32,14 +32,14 @@ class Tama {
 
     draw(){
         //hitbox
-        ctx.fillStyle = 'white  ';
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2)
-        ctx.fill();
+        // ctx.fillStyle = 'white  ';
+        // ctx.beginPath();
+        // ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2)
+        // ctx.fill();
 
         const tama = new Image();
-        tama.src = '/src/images/ASTRONAUT.png';
-        ctx.drawImage(tama, this.x-40, this.y-50, 70 , 125);
+        tama.src = '/src/images/TAMA.png';
+        ctx.drawImage(tama, this.x - 10, this.y - 10, canvas.height / 20, 20);
 
     }
 
