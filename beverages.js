@@ -37,7 +37,7 @@ function handleBeverages() {
     }
 
     //to not have too many beverages for performance
-    if (beverageArray.length > 200) {
+    if (beverageArray.length > 100) {
         beverageArray.pop(beverageArray[0])
     }
 

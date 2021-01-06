@@ -5,6 +5,7 @@ const welcome = document.querySelector('.welcome')
 canvas.width = 600;
 canvas.height = 400;
 
+
 let spacePressed = false;
 let angle = 0;
 let hue = 0;
@@ -105,6 +106,10 @@ function animate(){
     handleDecline();
     handleFeeling();
     handleEvolution();
+    handleThirstHelper();
+    handleRestHelper();
+    handleHealthHelper();
+    handleLoveHelper();
     handleGameOver(); 
 
 }
@@ -142,8 +147,39 @@ function handleEvolution(){
     }
 }
 
-function handleEndBackground(){
-    return true
+
+function handleThirstHelper(){
+    if (thirst < 20) {
+        ctx.fillStyle = '#DBBC98';
+        ctx.fillText("i'm thirsty!", 160, canvas.height / 2 - 10);
+        return true;
+    }
+
+    
+}
+
+function handleRestHelper(){
+    if (rest < 20) {
+        ctx.fillStyle = '#DBBC98';
+        ctx.fillText("i'm tired!", 160, canvas.height / 2);
+        return true;
+    }
+}
+
+function handleLoveHelper() {
+    if (love < 20) {
+        ctx.fillStyle = '#DBBC98';
+        ctx.fillText("i'm sad!", 160, canvas.height / 2 + 10);
+        return true;
+    }
+}
+
+function handleHealthHelper(){
+    if (life < 20) {
+        ctx.fillStyle = '#DBBC98';
+        ctx.fillText("i'm injured!", 160, canvas.height / 2 + 20);
+        return true;
+    }
 }
 
 

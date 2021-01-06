@@ -34,7 +34,7 @@ function handleStars(){
     }
 
     //to not have too many stars for performance
-    if (starsArray.length > 200) {
+    if (starsArray.length > 100) {
         starsArray.pop(starsArray[0])
     }
 }
