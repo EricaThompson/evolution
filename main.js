@@ -130,11 +130,10 @@ if (!gameStarted) background();
 
 if (gameOver) gameOverText.classList.remove('disappear')
 
+//space bar players
 window.addEventListener('keydown', function(e){
     if ((e.code === "Space" && !gameStarted) ) {
-        console.log('pressed')
-        
-
+        // console.log('pressed')
         gameStarted = true; 
         gameOver = false;
         animate()
@@ -160,6 +159,35 @@ window.addEventListener('keydown', function(e){
 
 })
 
+//click players
+startBtn.addEventListener('click', function (e) {
+    if ((!gameStarted)) {
+        // console.log('pressed')
+        gameStarted = true;
+        gameOver = false;
+        animate()
+        // handleEndBackground()
+    }
+
+    if (e.code === "Space" && gameOver) {
+        frame = 0;
+        rest = 25;
+        thirst = 25;
+        love = 25;
+        gamespeed = 2;
+        feeling = '🙂';
+        damage = 0;
+        // let life = 100;
+        life = 1;
+        gameStarted = true;
+        gameOver = false;
+        gameOverText.classList.add('disappear')
+        animate()
+
+    }
+
+})
+
 
 window.addEventListener('keydown', function(e){
     if (e.code === "Space") spacePressed = true;
@@ -168,6 +196,19 @@ window.addEventListener('keydown', function(e){
 window.addEventListener('keyup', function (e) {
     if (e.code === "Space") spacePressed = false;
 })
+
+window.addEventListener('mousedown', function () {
+    spacePressed = true;
+    // console.log('clicked')
+})
+
+window.addEventListener('mouseup', function () {
+    spacePressed = false;
+    // console.log('clicked')
+})
+
+
+
 
 
 function handleEvolution(){
