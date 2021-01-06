@@ -48,7 +48,7 @@ function handlePillows() {
         //collision
         if (pillowArray[i].distance < pillowArray[i].radius + tama.radius) {
             if (!pillowArray[i].counted){
-                rest++;
+                rest += 10;
                 pillowArray[i].counted = true;
                 pillowArray.splice(i, 1)
             }

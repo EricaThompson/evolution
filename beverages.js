@@ -45,7 +45,7 @@ function handleBeverages() {
         //collision
         if (beverageArray[i].distance < beverageArray[i].radius + tama.radius) {
             if (!beverageArray[i].counted) {
-                thirst++;
+                thirst += 10;
                 beverageArray[i].counted = true;
                 beverageArray.splice(i, 1)
             }

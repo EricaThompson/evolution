@@ -10,10 +10,11 @@ let hue = 0;
 let frame = 0;
 let rest = 25;
 let thirst = 25;
-let life = 100;
 let love = 25;
 let gamespeed = 2;
 let feeling = '🙂';
+// let life = 100;
+let life = (rest + thirst + love);
 // let statusColor = 'linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%)';
 
 const gradient = ctx.createLinearGradient(0,0,150,0);
@@ -144,20 +145,26 @@ function handleDecline(){
 }
 
 function handleGameOver(){
-    if (thirst <= 0) {
+    if (life <= 0){
         ctx.fillStyle = 'black';
+        ctx.fillText("You're too thirsty! Try again!", 160, canvas.height / 2 - 10);
+        return true;
+    }
+
+    if (thirst <= 0) {
+        ctx.fillStyle = 'white';
         ctx.fillText("You're too thirsty! Try again!", 160, canvas.height / 2 - 10);
         return true;
     } 
 
     if (rest <= 0) {
-        ctx.fillStyle = 'black';
+        ctx.fillStyle = 'white';
         ctx.fillText('Not enough sleep! Try again!', 160, canvas.height / 2 - 10);
         return true;
     }
 
     if (love <= 0) {
-        ctx.fillStyle = 'black';
+        ctx.fillStyle = 'white';
         ctx.fillText('Your heart was broken! Try again!', 160, canvas.height / 2 - 10);
         return true;
     }
