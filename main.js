@@ -23,7 +23,7 @@ let gamespeed = 2;
 let feeling = '🙂';
 let damage = 0;
 let life = 1 ;
-let level = 1;
+let level = 0;
 let age = 0;
 
 // let statusColor = 'linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%)';
@@ -90,6 +90,7 @@ function animate(){
             gamespeed = 2;
             feeling = '🙂';
             damage = 0;
+            canvas.classList.add('level-1')
             levelStarted = true;
         }
         handleHearts();

@@ -26,7 +26,7 @@ html {
     /* background-color: #cbc9c9; */
 
     /* Tomorrow Night Blue*/
-    background-color: #002554;
+    /* background-color: #002554; */
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 
     /* background: linear-gradient(120deg, #9df2dc, #80beae, #618f83, #486b62, #486b62, #2e443e, #151e1c, #000000);
@@ -35,6 +35,14 @@ html {
     -webkit-animation: AnimationName 59s ease infinite;
     -moz-animation: AnimationName 59s ease infinite;
     animation: AnimationName 59s ease infinite; */
+}
+
+.level-1 {
+    background-image: url('../src//images/Background.jpg');
+    background-repeat: no-repeat;
+    background-size: 200vw, 90vh;
+    background-color: transparent;
+    
 }
 
 /* @-webkit-keyframes AnimationName {
