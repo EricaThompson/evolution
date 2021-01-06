@@ -7,8 +7,8 @@ class Beverage {
         this.radius = 25;
         this.speed = Math.random() * 5 + 1;
         this.distance;
-        this.color = 'hsla(' + hue + ', 100%, 50%, 0.8)';
         this.counted = false;
+
     }
 
     update() {
@@ -49,10 +49,6 @@ function handleBeverages() {
                 beverageArray[i].counted = true;
                 beverageArray.splice(i, 1)
             }
-
-            setTimeout(() => {
-                thirst--
-            }, 10000)
 
         }
     }
