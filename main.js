@@ -1,5 +1,7 @@
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
+const startBtn = document.querySelector('.start-button')
+const welcome = document.querySelector('.welcome')
 canvas.width = 600;
 canvas.height = 400;
 
@@ -26,7 +28,37 @@ gradient.addColorStop('1', '#CFE3CB');
 
 // canvas.height - 90;
 
+//! fix background
+// function background(){
+//     ctx.clearRect(0, 0, canvas.width, canvas.height);
+//     handleStars();
+//     ctx.clearRect(0, 0, canvas.width, canvas.height);
+//     handleStars();
+//     ctx.clearRect(0, 0, canvas.width, canvas.height);
+//     handleStars();
+//     ctx.clearRect(0, 0, canvas.width, canvas.height);
+//     handleStars();
+//     ctx.clearRect(0, 0, canvas.width, canvas.height);
+//     handleStars();
+//     ctx.clearRect(0, 0, canvas.width, canvas.height);
+//     handleStars();
+//     ctx.clearRect(0, 0, canvas.width, canvas.height);
+//     handleStars();
+//     requestAnimationFrame(background);
+//     // angle+=0.1;
+//     frame++;
+    
+//     if (handleEndBackground()){
+//         return;
+//     }
+// }
+
+// background();
+
+
+
 function animate(){
+    welcome.classList.add('disappear')
     ctx.clearRect(0,0, canvas.width, canvas.height);
 
     // ctx.fillRect(10,canvas.height - 90,50,50);
@@ -72,7 +104,8 @@ function animate(){
 
 }
 
-animate();
+
+startBtn.addEventListener('click', animate, handleEndBackground)
 
 window.addEventListener('keydown', function(e){
     if (e.code === "Space") spacePressed = true;
@@ -82,12 +115,17 @@ window.addEventListener('keyup', function (e) {
     if (e.code === "Space") spacePressed = false;
 })
 
+
 function handleEvolution(){
     if (life > 100 && love > 100 && thirst > 100 && rest > 100) {
         ctx.fillStyle =  '#DBBC98';
         ctx.fillText("Evolve!", 160, canvas.height / 2 - 10  );
         return true;
     }
+}
+
+function handleEndBackground(){
+    return true
 }
 
 
