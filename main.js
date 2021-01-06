@@ -1,7 +1,9 @@
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 const startBtn = document.querySelector('.start-button')
-const welcome = document.querySelector('.welcome')
+const welcome = document.querySelector('.welcome');
+const gameOverText = document.querySelector('.game-over');
+
 canvas.width = 600;
 canvas.height = 400;
 
@@ -20,6 +22,7 @@ let damage = 0;
 let life = 1 ;
 // let statusColor = 'linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%)';
 let gameStarted = false;
+let gameOver = false;
 
 const gradient = ctx.createLinearGradient(0,0,150,0);
 gradient.addColorStop('0', '#cbc9c9');
@@ -32,6 +35,7 @@ gradient.addColorStop('1', '#CFE3CB');
 
 
 function background(){
+    gameOverText.classList.add('disappear')
     if (gameStarted) {
         return;
     }
@@ -97,6 +101,8 @@ function animate(){
     ctx.fillRect(25, 54, (thirst / 100) * 100, 5);
     ctx.fillRect(25, 69, (love / 100) * 100, 5);
     if (handleGameOver()){
+        gameOver = true;
+        gameOverText.classList.remove('disappear')
         return;
     }
     requestAnimationFrame(animate);
@@ -119,14 +125,36 @@ function animate(){
 
 if (!gameStarted) background();
 
+if (gameOver) gameOverText.classList.remove('disappear')
+
 window.addEventListener('keydown', function(e){
-    if (e.code === "Space" && !gameStarted) {
+    if ((e.code === "Space" && !gameStarted) ) {
         console.log('pressed')
-        animate()
+        
 
         gameStarted = true; 
+        gameOver = false;
+        animate()
         // handleEndBackground()
     } 
+
+    if (e.code === "Space" && gameOver) {
+        frame = 0;
+        rest = 25;
+        thirst = 25;
+        love = 25;
+        gamespeed = 2;
+        feeling = '🙂';
+        damage = 0;
+        // let life = 100;
+        life = 1;
+        gameStarted = true;
+        gameOver = false;
+        gameOverText.classList.add('disappear')
+        animate()
+        
+    }
+
 })
 
 

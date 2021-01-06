@@ -54,8 +54,6 @@ p {
     text-align: center;
     /* right: 50%;
     translate: 50%, 50%; */
-    
-    
 }
 
 p {
@@ -114,6 +112,19 @@ button {
     100%{background-position:0% 50%}
 }
 
+.game-over {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    top: 70%;
+    left: 40%;
+    /* display: none; */
+}
+
 .disappear {
     display: none;
 }
+
+/* .show {
+    
+} */
