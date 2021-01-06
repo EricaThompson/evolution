@@ -14,10 +14,11 @@ let life = 100;
 let love = 25;
 let gamespeed = 2;
 let feeling = '🙂';
+// let statusColor = 'linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%)';
 
-// const gradient = ctx.createLinearGradient(0,0,0,70);
-// gradient.addColorStop('0.4', '#fff');
-// gradient.addColorStop('0.5', '#000');
+const gradient = ctx.createLinearGradient(0,0,150,0);
+gradient.addColorStop('0', '#cbc9c9');
+gradient.addColorStop('1', '#CFE3CB');
 // gradient.addColorStop('0.55', '#4040ff');
 // gradient.addColorStop('0.6', '#000');
 // gradient.addColorStop('0.9', '#fff');
@@ -41,23 +42,30 @@ function animate(){
 
     //scorecard
     ctx.fillStyle = 'white';
-    ctx.fillText(feeling + ' ' + life, 10, 30)
-    ctx.fillText('😴 ' + rest, 10, 45)
-    ctx.fillText('🚰 ' + thirst, 10, 60)
-    ctx.fillText('💌 ' + love, 10, 75)
+    ctx.fillText(feeling, 10, 30)
+    ctx.fillText('😴 ', 10, 45)
+    ctx.fillText('🚰 ', 10, 60)
+    ctx.fillText('💌 ', 10, 75)
     ctx.fillText('evolve', 130, 13)
     ctx.beginPath();
-    ctx.moveTo(120, 0);
-    ctx.lineTo(120, 80);
+    ctx.moveTo(110, 0);
+    ctx.lineTo(110, 80);
     ctx.stroke();
-
+    ctx.fillStyle = gradient;
+    ctx.fillRect(25, 24, (life / 100) * 100, 5);
+    ctx.fillRect(25, 39, (rest / 100) * 100, 5);
+    ctx.fillRect(25, 54, (thirst / 100) * 100, 5);
+    ctx.fillRect(25, 69, (love / 100) * 100, 5);
+    if (handleGameOver()){
+        return;
+    }
     requestAnimationFrame(animate);
     // angle+=0.1;
     hue++;
     frame++;
-    decline();
+    handleDecline();
     handleFeeling();
-    
+    handleGameOver(); 
 
 }
 
@@ -111,16 +119,13 @@ function handleFeeling(){
         feeling = '😭'
     }
     
-    if (life <= 0) {
+    if (life <= 1 ) {
         feeling = '😪'
-    } else {
-
-    }
-
-
+        // ctx.font = '25px helvetica'
+    } 
 }
 
-function decline(){
+function handleDecline(){
     if (frame % 500 === 0) {
         rest--;
     }
@@ -133,7 +138,20 @@ function decline(){
         love--;
     }
 
-    if (frame % 500 === 0) {
+    if (frame % 50 === 0) {
         life--;
     }
 }
+
+function handleGameOver(){
+    if (life <= 0) {
+        ctx.fillStyle = 'black';
+        ctx.fillText('You fainted! Game Over', 160, canvas.height / 2 - 10);
+        return true;
+    } 
+
+    
+}
+
+
+
