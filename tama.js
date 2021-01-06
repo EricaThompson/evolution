@@ -3,8 +3,8 @@ class Tama {
         this.x = 150;
         this.y = 200;
         this.vy = 0;
-        this.width = 20;
-        this.height = 20;
+        this.width = canvas.width / 30;
+        this.height = canvas.height / 20;
         this.weight = .5;
         this.radius = 25;
     }

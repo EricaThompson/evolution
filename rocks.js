@@ -20,7 +20,7 @@ class Rock {
     draw() {
         const rock = new Image();
         rock.src = 'ROCK.png';
-        ctx.drawImage(rock, this.x, this.y, 25, 15);
+        ctx.drawImage(rock, this.x, this.y, canvas.height / 20, canvas.width / 30);
     }
 
 }

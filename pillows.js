@@ -9,7 +9,6 @@ class Pillow {
         this.distance;
         this.color = 'hsla(' + hue + ', 100%, 50%, 0.8)';
         this.counted = false;
-        
     }
 
     update() {
@@ -22,7 +21,7 @@ class Pillow {
     draw() {
         const pillow = new Image();
         pillow.src = 'PILLOW.png';
-        ctx.drawImage(pillow, this.x, this.y, 25, 15);
+        ctx.drawImage(pillow, this.x, this.y, canvas.height / 20, 15);
     }
 
 }
@@ -53,11 +52,6 @@ function handlePillows() {
                 pillowArray[i].counted = true;
                 pillowArray.splice(i, 1)
             }
-
-            // setTimeout(() => {
-            //     rest += -1
-            // },15000)
-    
         }
     }
 }

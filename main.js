@@ -116,7 +116,7 @@ function handleFeeling(){
     }
     
     if (life < 10) {
-        feeling = '😭'
+        feeling = '😪'
     }
     
     if (life <= 1 ) {
@@ -126,15 +126,15 @@ function handleFeeling(){
 }
 
 function handleDecline(){
-    if (frame % 500 === 0) {
+    if (frame % 50 === 0) {
         rest--;
     }
 
-    if (frame % 500 === 0) {
+    if (frame % 50 === 0) {
         thirst--;
     }
 
-    if (frame % 500 === 0) {
+    if (frame % 50 === 0) {
         love--;
     }
 
@@ -144,13 +144,23 @@ function handleDecline(){
 }
 
 function handleGameOver(){
-    if (life <= 0) {
+    if (thirst <= 0) {
         ctx.fillStyle = 'black';
-        ctx.fillText('You fainted! Game Over', 160, canvas.height / 2 - 10);
+        ctx.fillText("You're too thirsty! Try again!", 160, canvas.height / 2 - 10);
         return true;
     } 
 
-    
+    if (rest <= 0) {
+        ctx.fillStyle = 'black';
+        ctx.fillText('Not enough sleep! Try again!', 160, canvas.height / 2 - 10);
+        return true;
+    }
+
+    if (love <= 0) {
+        ctx.fillStyle = 'black';
+        ctx.fillText('Your heart was broken! Try again!', 160, canvas.height / 2 - 10);
+        return true;
+    }
 }
 
 

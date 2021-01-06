@@ -19,7 +19,7 @@ class Heart {
     draw() {
         const heart = new Image();
         heart.src = 'HEART.png';
-        ctx.drawImage(heart, this.x, this.y, 25, 15);
+        ctx.drawImage(heart, this.x, this.y, canvas.height / 20, canvas.width / 30);
     }
 
 }

@@ -21,7 +21,7 @@ class Beverage {
     draw() {
         const beverage = new Image();
         beverage.src = 'BEVERAGE.png';
-        ctx.drawImage(beverage, this.x, this.y, 25, 15);
+        ctx.drawImage(beverage, this.x, this.y, canvas.height / 20, 15);
     }
 
 }
