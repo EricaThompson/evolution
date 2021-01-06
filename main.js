@@ -3,7 +3,6 @@ const ctx = canvas.getContext('2d');
 canvas.width = 600;
 canvas.height = 400;
 
-
 let spacePressed = false;
 let angle = 0;
 let hue = 0;
@@ -13,8 +12,9 @@ let thirst = 25;
 let love = 25;
 let gamespeed = 2;
 let feeling = '🙂';
+let damage = 0;
 // let life = 100;
-let life = (rest + thirst + love);
+let life = 1 ;
 // let statusColor = 'linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%)';
 
 const gradient = ctx.createLinearGradient(0,0,150,0);
@@ -47,10 +47,11 @@ function animate(){
     ctx.fillText('😴 ', 10, 45)
     ctx.fillText('🚰 ', 10, 60)
     ctx.fillText('💌 ', 10, 75)
-    ctx.fillText('evolve', 130, 13)
+    ctx.fillText('evolve', 130, 15)
     ctx.beginPath();
-    ctx.moveTo(110, 0);
-    ctx.lineTo(110, 80);
+    ctx.moveTo(125, 0);
+    ctx.lineTo(125, 80);
+    ctx.strokeStyle = '#DBBC98'
     ctx.stroke();
     ctx.fillStyle = gradient;
     ctx.fillRect(25, 24, (life / 100) * 100, 5);
@@ -66,6 +67,7 @@ function animate(){
     frame++;
     handleDecline();
     handleFeeling();
+    handleEvolution();
     handleGameOver(); 
 
 }
@@ -80,8 +82,18 @@ window.addEventListener('keyup', function (e) {
     if (e.code === "Space") spacePressed = false;
 })
 
+function handleEvolution(){
+    if (life > 100 && love > 100 && thirst > 100 && rest > 100) {
+        ctx.fillStyle =  '#DBBC98';
+        ctx.fillText("Evolve!", 160, canvas.height / 2 - 10  );
+        return true;
+    }
+}
+
 
 function handleFeeling(){
+    life = (rest + thirst + love / 5  ) - damage;
+    feeling = '🙂';
     //if statement is faster than switch
     //else if doesn't work..
     if (life < 90){
@@ -146,25 +158,25 @@ function handleDecline(){
 
 function handleGameOver(){
     if (life <= 0){
-        ctx.fillStyle = 'black';
-        ctx.fillText("You're too thirsty! Try again!", 160, canvas.height / 2 - 10);
+        ctx.fillStyle = '#DBBC98';
+        ctx.fillText("You fainted! Try again!", 160, canvas.height / 2 - 10);
         return true;
     }
 
     if (thirst <= 0) {
-        ctx.fillStyle = 'white';
+        ctx.fillStyle = '#DBBC98';
         ctx.fillText("You're too thirsty! Try again!", 160, canvas.height / 2 - 10);
         return true;
     } 
 
     if (rest <= 0) {
-        ctx.fillStyle = 'white';
+        ctx.fillStyle = '#DBBC98';
         ctx.fillText('Not enough sleep! Try again!', 160, canvas.height / 2 - 10);
         return true;
     }
 
     if (love <= 0) {
-        ctx.fillStyle = 'white';
+        ctx.fillStyle = '#DBBC98';
         ctx.fillText('Your heart was broken! Try again!', 160, canvas.height / 2 - 10);
         return true;
     }

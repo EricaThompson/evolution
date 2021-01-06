@@ -80,7 +80,7 @@ function handleRocks() {
         //collision
         if (rockArray[i].distance < rockArray[i].radius + tama.radius) {
             if (!rockArray[i].counted) {
-                life -= 10;
+                damage += 25;
                 rockArray[i].counted = true;
                 rockArray.splice(i, 1)
             }
