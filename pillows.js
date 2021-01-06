@@ -1,4 +1,6 @@
 const pillowArray = [];
+const pillow = new Image();
+pillow.src = '/src/images/PILLOW.png';
 
 class Pillow {
     constructor() {
@@ -19,8 +21,6 @@ class Pillow {
     }
 
     draw() {
-        const pillow = new Image();
-        pillow.src = '/src/images/PILLOW.png';
         ctx.drawImage(pillow, this.x, this.y, canvas.height / 20, 15);
     }
 

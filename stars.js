@@ -1,4 +1,6 @@
 const starsArray = [];
+const bang = new Image();
+bang.src = '/src/images/star.png';
 
 class Star {
     constructor(){
@@ -16,8 +18,8 @@ class Star {
     }
 
     draw(){
-        const bang = new Image();
-        bang.src = '/src/images/star.png';
+        // const bang = new Image();
+        // bang.src = '/src/images/star.png';
         ctx.drawImage(bang, this.x, this.y, 30, 30);
     }
 
@@ -34,7 +36,7 @@ function handleStars(){
     }
 
     //to not have too many stars for performance
-    if (starsArray.length > 100) {
+    if (starsArray.length > 300) {
         starsArray.pop(starsArray[0])
     }
 }

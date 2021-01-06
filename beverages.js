@@ -1,4 +1,6 @@
 const beverageArray = [];
+const beverage = new Image();
+beverage.src = '/src/images/BEVERAGE.png';
 
 class Beverage {
     constructor() {
@@ -19,8 +21,7 @@ class Beverage {
     }
 
     draw() {
-        const beverage = new Image();
-        beverage.src = '/src/images/BEVERAGE.png';
+        
         ctx.drawImage(beverage, this.x, this.y, canvas.height / 20, 15);
     }
 

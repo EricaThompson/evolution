@@ -1,5 +1,7 @@
 
 const heartArray = [];
+const heart = new Image();
+heart.src = '/src/images/HEART.png';
 
 class Heart {
     constructor() {
@@ -25,8 +27,7 @@ class Heart {
         // ctx.arc(this.x + 10, this.y + 10, this.radius, 0, Math.PI * 2)
         // ctx.fill();
 
-        const heart = new Image();
-        heart.src = '/src/images/HEART.png';
+        
         ctx.drawImage(heart, this.x, this.y, canvas.height / 20, canvas.width / 30);
     }
 

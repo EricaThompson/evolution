@@ -4,6 +4,9 @@ const startBtn = document.querySelector('.start-button')
 const welcome = document.querySelector('.welcome');
 const gameOverText = document.querySelector('.game-over');
 
+/*score is based on how many days 
+it took you to become the astronaut.*/
+
 canvas.width = 600;
 canvas.height = 400;
 
