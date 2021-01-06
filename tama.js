@@ -6,7 +6,7 @@ class Tama {
         this.width = canvas.width / 30;
         this.height = canvas.height / 20;
         this.weight = .5;
-        this.radius = 25;
+        this.radius = 10;
     }
 
     update(){
@@ -31,11 +31,15 @@ class Tama {
     }
 
     draw(){
-        // ctx.fillStyle = 'black';
-        // ctx.fillRect(this.x, this.y, this.width, this.height);
+        //hitbox
+        ctx.fillStyle = 'white  ';
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2)
+        ctx.fill();
+
         const tama = new Image();
         tama.src = 'ASTRONAUT.png';
-        ctx.drawImage(tama, this.x, this.y, 70 , 125);
+        ctx.drawImage(tama, this.x-40, this.y-50, 70 , 125);
 
     }
 

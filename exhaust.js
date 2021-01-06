@@ -2,8 +2,8 @@ const exhaustArray = [];
 
 class Exhaust {
     constructor(){
-        this.x = tama.x +20;
-        this.y = tama.y + 70;
+        this.x = tama.x - 8;
+        this.y = tama.y - 10;
         this.size = Math.random() * 7 + 3;
         this.speedY = (Math.random() * 1) - 0.5;
         this.color = 'hsla(' + hue +', 100%, 50%, 0.8)';

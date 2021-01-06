@@ -1,13 +1,20 @@
 const rockArray = [];
+const rockImage = new Image();
+rockImage.src = 'rolling-rock.png'
 
 class Rock {
     constructor() {
         this.x = canvas.width;
         this.y = Math.random() * canvas.height;
-        this.radius = 25;
+        this.radius = 7;
         this.speed = Math.random() * 5 + 1;
         this.distance;
         this.counted = false;
+        this.frame = 0;
+        this.frameX = 0;
+        this.frameY = 0;
+        this.spriteWidth = 34;
+        this.spriteHeight = 32;
     }
 
     update() {
@@ -15,12 +22,41 @@ class Rock {
         const dx = this.x - tama.x;
         const dy = this.y - tama.y;
         this.distance = Math.sqrt(dx * dx + dy * dy)
+
+        //cycle through x frames
+        if (frame % 5 === 0 ){
+            this.frame++;
+            if (this.frame >= 12) this.frame = 0
+            
+            //cycle through x axis
+            if (this.frame === 2 || this.frame === 5 || this.frame === 8 || this.frame === 11) {
+                this.frameX = 0
+            } else {
+                this.frameX++;
+            }
+        
+            //cycle through y axis
+            if (this.frame < 2) this.frameY = 0;
+            else if (this.frame < 5) this.frameY = 1;
+            else if (this.frame < 8) this.frameY = 2;
+            else if (this.frame < 11) this.frameY = 3;
+            else this.frameY = 0;
+            
+        }
     }
 
     draw() {
-        const rock = new Image();
-        rock.src = 'ROCK.png';
-        ctx.drawImage(rock, this.x, this.y, canvas.height / 20, canvas.width / 30);
+        //hitbox
+        // ctx.fillStyle = 'red';
+        // ctx.beginPath();
+        // ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2)
+        // ctx.fill();
+
+        ctx.drawImage(rockImage, this.frameX * this.spriteWidth, this.frameY * this.spriteHeight, this.spriteWidth, this.spriteHeight, this.x - 10, this.y - 11, canvas.height / 20, canvas.width / 30)
+        //old rock
+        // const rock = new Image();
+        // rock.src = 'ROCK.png';
+        // ctx.drawImage(rock, this.x, this.y, canvas.height / 20, canvas.width / 30);
     }
 
 }
