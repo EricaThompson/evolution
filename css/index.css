@@ -2,6 +2,16 @@ p {
     margin: 0;
 }
 
+html {
+    background-color: #b6b09c;
+    /* background: linear-gradient(120deg, #9df2dc, #80beae, #618f83, #486b62, #486b62, #2e443e, #151e1c, #000000);
+    background-size: 1600% 1600%;
+
+    -webkit-animation: AnimationName 59s ease infinite;
+    -moz-animation: AnimationName 59s ease infinite;
+    animation: AnimationName 59s ease infinite; */
+}
+
 #canvas {
     position: absolute;
     top: 50%;

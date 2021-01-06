@@ -3,8 +3,9 @@ const ctx = canvas.getContext('2d');
 const startBtn = document.querySelector('.start-button')
 const welcome = document.querySelector('.welcome');
 const gameOverText = document.querySelector('.game-over');
+const tryAgain = document.querySelector('.try-again')
 
-/*score is based on how many days 
+/*score is based on how many years 
 it took you to become the astronaut.*/
 
 canvas.width = 600;
@@ -28,7 +29,7 @@ let gameStarted = false;
 let gameOver = false;
 
 const gradient = ctx.createLinearGradient(0,0,150,0);
-gradient.addColorStop('0', '#cbc9c9');
+gradient.addColorStop('0', '#002554');
 gradient.addColorStop('1', '#CFE3CB');
 // gradient.addColorStop('0.55', '#4040ff');
 // gradient.addColorStop('0.6', '#000');
@@ -160,7 +161,7 @@ window.addEventListener('keydown', function(e){
 })
 
 //click players
-startBtn.addEventListener('click', function (e) {
+startBtn.addEventListener('mousedown', function (e) {
     if ((!gameStarted)) {
         // console.log('pressed')
         gameStarted = true;
@@ -169,7 +170,11 @@ startBtn.addEventListener('click', function (e) {
         // handleEndBackground()
     }
 
-    if (e.code === "Space" && gameOver) {
+    
+})
+
+tryAgain.addEventListener('click', function(){
+    if (gameOver) {
         frame = 0;
         rest = 25;
         thirst = 25;
@@ -183,9 +188,7 @@ startBtn.addEventListener('click', function (e) {
         gameOver = false;
         gameOverText.classList.add('disappear')
         animate()
-
     }
-
 })
 
 
@@ -199,12 +202,10 @@ window.addEventListener('keyup', function (e) {
 
 window.addEventListener('mousedown', function () {
     spacePressed = true;
-    // console.log('clicked')
 })
 
 window.addEventListener('mouseup', function () {
     spacePressed = false;
-    // console.log('clicked')
 })
 
 
