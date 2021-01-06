@@ -18,6 +18,7 @@ let damage = 0;
 // let life = 100;
 let life = 1 ;
 // let statusColor = 'linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%)';
+let gameStarted = false;
 
 const gradient = ctx.createLinearGradient(0,0,150,0);
 gradient.addColorStop('0', '#cbc9c9');
@@ -28,32 +29,36 @@ gradient.addColorStop('1', '#CFE3CB');
 
 // canvas.height - 90;
 
-//! fix background
-// function background(){
-//     ctx.clearRect(0, 0, canvas.width, canvas.height);
-//     handleStars();
-//     ctx.clearRect(0, 0, canvas.width, canvas.height);
-//     handleStars();
-//     ctx.clearRect(0, 0, canvas.width, canvas.height);
-//     handleStars();
-//     ctx.clearRect(0, 0, canvas.width, canvas.height);
-//     handleStars();
-//     ctx.clearRect(0, 0, canvas.width, canvas.height);
-//     handleStars();
-//     ctx.clearRect(0, 0, canvas.width, canvas.height);
-//     handleStars();
-//     ctx.clearRect(0, 0, canvas.width, canvas.height);
-//     handleStars();
-//     requestAnimationFrame(background);
-//     // angle+=0.1;
-//     frame++;
-    
-//     if (handleEndBackground()){
-//         return;
-//     }
-// }
 
-// background();
+function background(){
+    if (gameStarted) {
+        return;
+    }
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    handleStars();
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    handleStars();
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    handleStars();
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    handleStars();
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    handleStars();
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    handleStars();
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    handleStars();
+    requestAnimationFrame(background);
+    // angle+=0.1;
+    frame++;
+    
+    // if (handleEndBackground()){
+    //     return;
+    // }
+
+    
+}
 
 
 
@@ -105,7 +110,20 @@ function animate(){
 }
 
 
-startBtn.addEventListener('click', animate, handleEndBackground)
+// startBtn.addEventListener('click', animate, handleEndBackground)
+
+if (!gameStarted) background();
+
+window.addEventListener('keydown', function(e){
+    if (e.code === "Space" && !gameStarted) {
+        console.log('pressed')
+        animate()
+
+        gameStarted = true; 
+        // handleEndBackground()
+    } 
+})
+
 
 window.addEventListener('keydown', function(e){
     if (e.code === "Space") spacePressed = true;
