@@ -31,6 +31,7 @@ let damage = 0;
 let life = 100 ;
 let level = 0;
 let year = 0;
+let time = 0;
 
 // let statusColor = 'linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%)';
 let gameStarted = false;
@@ -222,13 +223,13 @@ function animate(){
     // ctx.fillText(feeling, 10, 30)
     // ctx.fillText('💌 ', 10, 75)
     // ctx.fillRect(25, 24, (life / 100) * 100, 5);
-    ctx.fillText('evolve', 130, 15)
-    ctx.beginPath();
-    ctx.moveTo(125, 0);
-    ctx.lineTo(125, 80);
-    ctx.strokeStyle = '#DBBC98'
-    ctx.stroke();
-    ctx.fillStyle = gradient;
+    // ctx.fillText('evolve', 130, 15)
+    // ctx.beginPath();
+    // ctx.moveTo(125, 0);
+    // ctx.lineTo(125, 80);
+    // ctx.strokeStyle = '#DBBC98'
+    // ctx.stroke();
+    // ctx.fillStyle = gradient;
     
     // ctx.fillRect(25, 69, (love / 100) * 100, 5);
     if (handleGameOver()){

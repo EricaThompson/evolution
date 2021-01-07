@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>evolution</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/index.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/src/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/src/favicon/favicon-32x32.png">
@@ -21,7 +22,7 @@
         <div class="text">
             <p>evolution</p>
             <p>a game of growth </p> 
-            <p><inspired by tamagotchi</p>
+            <!-- <p>inspired by tamagotchi </p> -->
             <p>instructions:</p>
             <p>survive & evolve</p>
             <button class='start-button' >start: click or space bar</button>
@@ -30,8 +31,9 @@
 
     <div class="scorecard disappear">
         </br>
-        <div>year: <span class="year-count">0</span></div>
-        <div>love: <progress id="love-progress" value="25" max="100"></progress></div>
+        <span class="line"> evolve</span>
+        <div><span class="score-title">year:</span> <span class="year-count">0</span></div>
+        <div><span class="score-title">love:</span> <progress id="love-progress" value="25" max="100"></progress></div>
         
     </div>
 

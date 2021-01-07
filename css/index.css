@@ -176,7 +176,7 @@ button {
 }
 
 .scorecard {
-    width: 30vw;
+    width: 20vw;
     height: 20vh;
     font-family: 'Roboto';
     color: white;
@@ -194,12 +194,28 @@ button {
     animation: AnimationName 59s ease infinite;
 }
 
-#love-progress {
-    width: 11.5vw;
+.score-title {
+    font-weight: bolder;
+    font-size: 1.5vw;
 }
-/* .copy {
-    
-} */
+
+.line {
+    display: block;
+    position: absolute;
+    border-left: 2px solid #DBBC98;
+    height: 24vh;
+    left: 21vw;
+    top: 5vh;
+    padding-left: 7px;
+    padding-top: 3vh;
+}
+
+#love-progress {
+    width: 12.5vw;
+}
+.copy {
+    color:rgba(0, 255, 221, 0.2)
+}
 
 .disappear {
     display: none;
