@@ -12,6 +12,7 @@ const loveProgressBar = document.querySelector('#love-progress');
 const age = document.querySelector('.year-count');
 const helper = document.querySelector('.helper')
 const evolver = document.querySelector('.evolver')
+const healthBar = document.querySelector('.health')
 // helper.classList.add('disappear')
 
 /*score is based on how many years 
@@ -78,6 +79,7 @@ function background(){
 }
 
 
+scorecard.classList.remove('disappear')
 function animate(){
     // console.log(level)
     welcome.classList.add('disappear')
@@ -95,7 +97,6 @@ function animate(){
     if (level === 0){ 
         canvas.classList.add('level-0')
         canvas.classList.remove('level-1')
-        scorecard.classList.remove('disappear')
         age.innerHTML = year;
         // loveScore.innerHTML = `love`;
         // loveProgressBar.value -= love;
@@ -109,8 +110,9 @@ function animate(){
         // ctx.fillText('💌 ', 10, 75)
     }
 
-    if (level ===  1){
-
+    if (level === 1){
+        // healthBar.classList.remove('disappear')
+        // scorecard.classList.remove('disappear')
         // life = 100;
         if (!levelStarted) {
             // life = 100;
@@ -145,6 +147,7 @@ function animate(){
     if (level === 2){
         //background
         canvas.classList.add('level-2')
+
 
         //draw
         handlePillows();
@@ -399,18 +402,29 @@ function handleEvolution(){
         }
 
         if (level === 1){
+
             if (love >= 100 && life >= 100) {
-                ctx.fillStyle = '#DBBC98';
-                ctx.fillText("Press up or click to evolve!", 160, canvas.height / 2 - 10);
+                evolver.classList.remove('disappear')
 
-
-                window.addEventListener('keydown', function (e) {
-                    if (e.code === "ArrowUp" && !levelStarted) {
+                evolver.addEventListener('click', function (e) {
+                    if (!levelStarted) {
                         level++;
                         levelStarted = true;
                     }
 
+                    // if (e.code === "ArrowUp" && !levelStarted) {
+                    // }
                 })
+
+                window.addEventListener('keydown', function (e) {
+                    if (e.code === 'ArrowUp' && !levelStarted) {
+                        level++;
+                        levelStarted = true;
+                        evolver.classList.add('disappear')
+                    }
+                })
+            } else {
+                evolver.classList.add('disappear')
             }
         }
 }

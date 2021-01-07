@@ -177,9 +177,11 @@ button {
 
 .scorecard {
     width: 20vw;
-    height: 100%;
+    height: 30vh;
     padding-bottom: 10px;
     font-family: 'Roboto', sans-serif;
+    position: absolute;
+    z-index: 200;
     color: white;
     font-size: 10px;
     margin-left: 5vw;
