@@ -9,7 +9,7 @@ const congrats = document.querySelector('.congrats');
 const scorecard = document.querySelector('.scorecard');
 const loveScore = document.querySelector('.love-score');
 const loveProgressBar = document.querySelector('#love-progress');
-
+const age = document.querySelector('.year-count');
 
 /*score is based on how many years 
 it took you to become the astronaut.*/
@@ -30,7 +30,7 @@ let feeling = '🙂';
 let damage = 0;
 let life = 100 ;
 let level = 0;
-let age = 0;
+let year = 0;
 
 // let statusColor = 'linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%)';
 let gameStarted = false;
@@ -92,6 +92,7 @@ function animate(){
         canvas.classList.add('level-0')
         canvas.classList.remove('level-1')
         scorecard.classList.remove('disappear')
+        age.innerHTML = year;
         // loveScore.innerHTML = `love`;
         // loveProgressBar.value -= love;
 
@@ -105,6 +106,7 @@ function animate(){
     }
 
     if (level ===  1){
+
         // life = 100;
         if (!levelStarted) {
             // life = 100;
@@ -244,6 +246,13 @@ function animate(){
     handleGameOver(); 
     skipLevel();
     addStats();
+    handleAge();
+}
+
+function handleAge(){
+    if (frame % 2050 === 0) {
+        year++;
+    }
 }
 
 function addStats(){
