@@ -10,6 +10,8 @@ const scorecard = document.querySelector('.scorecard');
 const loveScore = document.querySelector('.love-score');
 const loveProgressBar = document.querySelector('#love-progress');
 const age = document.querySelector('.year-count');
+const helper = document.querySelector('.helper')
+helper.classList.add('disappear')
 
 /*score is based on how many years 
 it took you to become the astronaut.*/
@@ -401,6 +403,17 @@ function handleEvolution(){
 }
 
 
+function handleLoveHelper() {
+    if (love <= 20) {
+        // ctx.fillStyle = '#DBBC98';
+        // ctx.fillText("i'm sad!", 160, canvas.height / 2 + 10);
+        helper.classList.remove('disappear')
+        return true;
+    }
+
+    helper.classList.add('disappear')
+}
+
 function handleThirstHelper(){
     if (thirst < 20) {
         ctx.fillStyle = '#DBBC98';
@@ -413,14 +426,6 @@ function handleRestHelper(){
     if (rest < 20) {
         ctx.fillStyle = '#DBBC98';
         ctx.fillText("i'm tired!", 160, canvas.height / 2);
-        return true;
-    }
-}
-
-function handleLoveHelper() {
-    if (love <= 20) {
-        ctx.fillStyle = '#DBBC98';
-        ctx.fillText("i'm sad!", 160, canvas.height / 2 + 10);
         return true;
     }
 }
