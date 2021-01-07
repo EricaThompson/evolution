@@ -42,17 +42,23 @@ html {
 }
 
 .level-1 {
-    background-image: url('../src/images/Background.jpg');
+    background-image: url('../src/images/level-1.jpg');
     background-repeat: no-repeat;
     background-size: 200vw, 90vh;
     background-color: transparent;
-    
 }
 
 .level-2 {
     background-image: url('../src/images/level-2.jpg');
     background-repeat: no-repeat;
     background-size: 200vw, 90vh;
+    background-color: transparent;
+}
+
+.level-3 {
+    background-image: url('../src/images/level-3.jpg');
+    background-repeat: no-repeat;
+    background-size: 255vw, 90vh;
     background-color: transparent;
 }
 
@@ -135,6 +141,47 @@ button {
     color: white;
 }
 
+
+.game-over {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    top: 70%;
+    left: 40%;
+    /* display: none; */
+}
+
+.congrats {
+    position: absolute;
+    display: flex;
+    /* align-items: center; */
+    z-index: 2;
+    display: block;
+    text-align: center;
+    width: 35vw;
+    height: 25vh;
+    top: 40%;
+    left: 30%;
+    border-radius: 4px;
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+    font-family: 'Roboto', sans-serif;
+    /* border: 1px solid pink; */
+    background: linear-gradient(270deg, rgba(225, 0, 255, 0.2), rgba(0, 255, 221, 0.2));
+    background-size: 400% 400%;
+
+    -webkit-animation: AnimationName 59s ease infinite;
+    -moz-animation: AnimationName 59s ease infinite;
+    animation: AnimationName 59s ease infinite;
+}
+
+/* .copy {
+    
+} */
+
+.disappear {
+    display: none;
+    
+}
 @-webkit-keyframes AnimationName {
     0%{background-position:0% 50%}
     50%{background-position:100% 50%}
@@ -150,20 +197,3 @@ button {
     50%{background-position:100% 50%}
     100%{background-position:0% 50%}
 }
-
-.game-over {
-    position: absolute;
-    z-index: 2;
-    display: block;
-    top: 70%;
-    left: 40%;
-    /* display: none; */
-}
-
-.disappear {
-    display: none;
-}
-
-/* .show {
-    
-} */

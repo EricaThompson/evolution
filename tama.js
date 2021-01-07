@@ -36,10 +36,16 @@ class Tama {
         // ctx.beginPath();
         // ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2)
         // ctx.fill();
-
         const tama = new Image();
-        tama.src = '/src/images/TAMA.png';
-        ctx.drawImage(tama, this.x - 10, this.y - 10, canvas.height / 20, 20);
+        if (level < 2) {
+            tama.src = '/src/images/TAMA.png';
+            ctx.drawImage(tama, this.x - 10, this.y - 10, canvas.height / 20, 20);
+        }
+        if (level >= 2){
+            tama.src = '/src/images/ASTRONAUT.png';
+            ctx.drawImage(tama, this.x - 50, this.y - 50, canvas.height / 5, canvas.width / 5);
+        } 
+            
 
     }
 

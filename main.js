@@ -3,7 +3,8 @@ const ctx = canvas.getContext('2d');
 const startBtn = document.querySelector('.start-button')
 const welcome = document.querySelector('.welcome');
 const gameOverText = document.querySelector('.game-over');
-const tryAgain = document.querySelector('.try-again')
+const tryAgain = document.querySelector('.try-again');
+const congrats = document.querySelector('.congrats');
 
 /*score is based on how many years 
 it took you to become the astronaut.*/
@@ -85,7 +86,11 @@ function animate(){
         canvas.classList.remove('level-1')
         handleHearts();
         handleStars();
-        handleLoveHelper();
+        handleLoveHelper(); 
+        
+        //score
+        ctx.fillRect(25, 69, (love / 100) * 100, 5);
+        ctx.fillText('💌 ', 10, 75)
     }
 
     if (level ===  1){
@@ -114,6 +119,8 @@ function animate(){
         ctx.fillStyle = gradient;
         ctx.fillText(feeling, 10, 30)
         ctx.fillRect(25, 24, ((life - damage) / 100) * 100, 5);
+        ctx.fillRect(25, 69, (love / 100) * 100, 5);
+        ctx.fillText('💌 ', 10, 75)
         // ctx.fillText('age ', 10, 15)
         levelStarted = false;
     }
@@ -143,7 +150,17 @@ function animate(){
         ctx.fillRect(25, 39, (rest / 100) * 100, 5);
         ctx.fillText('🚰 ', 10, 60)
         ctx.fillRect(25, 54, (thirst / 100) * 100, 5);
+        ctx.fillRect(25, 69, (love / 100) * 100, 5);
+        ctx.fillText('💌 ', 10, 75)
         levelStarted = false;
+    }
+
+    if (level === 3){
+        canvas.classList.add('level-3')
+        congrats.classList.remove('disappear')
+        ctx.fillStyle = gradient;
+        ctx.fillText('🎉', 10, 45)
+
     }
 
 
@@ -190,7 +207,7 @@ function animate(){
     // ctx.fillText('😴 ', 10, 45)
     // ctx.fillText('🚰 ', 10, 60)
     // ctx.fillText(feeling, 10, 30)
-    ctx.fillText('💌 ', 10, 75)
+    // ctx.fillText('💌 ', 10, 75)
     // ctx.fillRect(25, 24, (life / 100) * 100, 5);
     ctx.fillText('evolve', 130, 15)
     ctx.beginPath();
@@ -200,7 +217,7 @@ function animate(){
     ctx.stroke();
     ctx.fillStyle = gradient;
     
-    ctx.fillRect(25, 69, (love / 100) * 100, 5);
+    // ctx.fillRect(25, 69, (love / 100) * 100, 5);
     if (handleGameOver()){
         gameOver = true;
         gameOverText.classList.remove('disappear')
@@ -215,12 +232,17 @@ function animate(){
     handleEvolution();
     handleGameOver(); 
     skipLevel();
-    addLove();
+    addStats();
 }
 
-function addLove(){
+function addStats(){
     window.addEventListener('keydown', (e) => {
-        if (e.code === "KeyL") love += 10
+        if (e.code === "KeyL") {
+            love += 10
+            life += 10
+            rest += 10
+            thirst += 10
+        }
         
     })
 }
