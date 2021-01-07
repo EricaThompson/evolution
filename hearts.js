@@ -53,6 +53,7 @@ function handleHearts() {
         if (heartArray[i].distance < heartArray[i].radius + tama.radius) {
             if (!heartArray[i].counted) {
                 love += 10;
+                loveProgressBar.value += 10;
                 heartArray[i].counted = true;
                 heartArray.splice(i, 1)
 

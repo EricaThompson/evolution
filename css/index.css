@@ -160,6 +160,7 @@ button {
     text-align: center;
     width: 35vw;
     height: 25vh;
+    
     top: 40%;
     left: 30%;
     border-radius: 4px;
@@ -174,6 +175,28 @@ button {
     animation: AnimationName 59s ease infinite;
 }
 
+.scorecard {
+    width: 30vw;
+    height: 20vh;
+    font-family: 'Roboto';
+    color: white;
+    font-size: 10px;
+    margin-left: 5vw;
+    margin-top: 7.5vh;
+    padding-left: 6px;
+    padding-top: 3px;
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+    background: linear-gradient(270deg, rgba(225, 0, 255, 0.2), rgba(0, 255, 221, 0.2));
+    background-size: 400% 400%;
+
+    -webkit-animation: AnimationName 59s ease infinite;
+    -moz-animation: AnimationName 59s ease infinite;
+    animation: AnimationName 59s ease infinite;
+}
+
+#love-progress {
+    width: 11.5vw;
+}
 /* .copy {
     
 } */

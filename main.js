@@ -6,6 +6,11 @@ const gameOverText = document.querySelector('.game-over');
 const tryAgain = document.querySelector('.try-again');
 const congrats = document.querySelector('.congrats');
 
+const scorecard = document.querySelector('.scorecard');
+const loveScore = document.querySelector('.love-score');
+const loveProgressBar = document.querySelector('#love-progress');
+
+
 /*score is based on how many years 
 it took you to become the astronaut.*/
 
@@ -68,6 +73,7 @@ function background(){
 
 }
 
+
 function animate(){
     // console.log(level)
     welcome.classList.add('disappear')
@@ -81,16 +87,21 @@ function animate(){
     // console.log('level: ', level)
 
     //1. level
+    
     if (level === 0){ 
         canvas.classList.add('level-0')
         canvas.classList.remove('level-1')
+        scorecard.classList.remove('disappear')
+        // loveScore.innerHTML = `love`;
+        // loveProgressBar.value -= love;
+
         handleHearts();
         handleStars();
         handleLoveHelper(); 
-        
+
         //score
-        ctx.fillRect(25, 69, (love / 100) * 100, 5);
-        ctx.fillText('💌 ', 10, 75)
+        // ctx.fillRect(25, 69, (love / 100) * 100, 5);
+        // ctx.fillText('💌 ', 10, 75)
     }
 
     if (level ===  1){
@@ -465,6 +476,7 @@ function handleDecline(){
     if (level === 0){
         if (frame % 50 === 0) {
             love--;
+            loveProgressBar.value -= 1;
         }
     } 
     
