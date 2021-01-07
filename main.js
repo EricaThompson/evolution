@@ -22,7 +22,7 @@ let love = 25;
 let gamespeed = 2;
 let feeling = '🙂';
 let damage = 0;
-let life = 1 ;
+let life = 100 ;
 let level = 0;
 let age = 0;
 
@@ -32,7 +32,7 @@ let levelStarted = false;
 let gameOver = false;
 
 const gradient = ctx.createLinearGradient(0,0,150,0);
-gradient.addColorStop('0', '#b6b09c');
+gradient.addColorStop('0', 'transparent');
 gradient.addColorStop('1', '#CFE3CB');
 // gradient.addColorStop('0.55', '#4040ff');
 // gradient.addColorStop('0.6', '#000');
@@ -68,6 +68,7 @@ function background(){
 }
 
 function animate(){
+    // console.log(level)
     welcome.classList.add('disappear')
     ctx.clearRect(0,0, canvas.width, canvas.height);
 
@@ -76,53 +77,121 @@ function animate(){
     handleExhaust();
     tama.update();
     tama.draw();
-    
-    if (level === 0){
+    // console.log('level: ', level)
+
+    //1. level
+    if (level === 0){ 
+        canvas.classList.add('level-0')
+        canvas.classList.remove('level-1')
         handleHearts();
         handleStars();
         handleLoveHelper();
     }
 
-    if (level > 0){
-        if (!levelStarted){
-            rest = 25;
-            thirst = 25;
-            love = 25;
-            gamespeed = 2;
-            feeling = '🙂';
-            damage = 0;
-            canvas.classList.add('level-1')
-            levelStarted = true;
+    if (level ===  1){
+        // life = 100;
+        if (!levelStarted) {
+            // life = 100;
+            // // rest = 25;
+            // // thirst = 25;
+            // love = 25;
+            // gamespeed = 2;
+            // feeling = '🙂';
+            // damage = 0;
+            // canvas.classList.remove('level-0')
+            // canvas.classList.add('level-1')
+            // levelStarted = true;
         }
+
+        canvas.classList.add('level-1')
         handleHearts();
         handleStars();
-        handlePillows();
-        handleBeverages();
         handleRocks();
-        handleThirstHelper();
-        handleRestHelper();
         handleLoveHelper();
-        ctx.fillStyle = gradient;
-        ctx.fillText(feeling, 10, 30)
-        ctx.fillText('😴 ', 10, 45)
-        ctx.fillText('🚰 ', 10, 60)
-        ctx.fillRect(25, 39, (rest / 100) * 100, 5);
-        ctx.fillRect(25, 54, (thirst / 100) * 100, 5);
-        ctx.fillRect(25, 24, (life / 100) * 100, 5);
-        ctx.fillStyle = gradient;
         handleHealthHelper();
         
+        //score
+        ctx.fillStyle = gradient;
+        ctx.fillText(feeling, 10, 30)
+        ctx.fillRect(25, 24, ((life - damage) / 100) * 100, 5);
+        // ctx.fillText('age ', 10, 15)
+        levelStarted = false;
     }
 
+    if (level === 2){
+        //background
+        canvas.classList.add('level-2')
+
+        //draw
+        handlePillows();
+        handleBeverages();
+        handleHearts();
+        handleStars();
+        handleRocks();
+
+        //helper
+        handleLoveHelper();
+        handleHealthHelper();
+        handleThirstHelper();
+        handleRestHelper();
+
+        //score
+        ctx.fillStyle = gradient;
+        ctx.fillText(feeling, 10, 30)
+        ctx.fillRect(25, 24, ((life - damage) / 100) * 100, 5);
+        ctx.fillText('😴 ', 10, 45)
+        ctx.fillRect(25, 39, (rest / 100) * 100, 5);
+        ctx.fillText('🚰 ', 10, 60)
+        ctx.fillRect(25, 54, (thirst / 100) * 100, 5);
+        levelStarted = false;
+    }
+
+
+    // if (level > 1){
+    //     if (!levelStarted){
+
+    //         rest = 25;
+    //         thirst = 25;
+    //         love = 25;
+    //         gamespeed = 2;
+    //         feeling = '🙂';
+    //         damage = 0;
+    //         canvas.classList.add('level-1')
+    //         levelStarted = true;
+    //     }
+    //     //draw
+    //     handleHearts();
+    //     handleStars();
+    //     handlePillows();
+    //     handleBeverages(); 
+    //     handleRocks();
+    //     handleThirstHelper();
+    //     handleRestHelper();
+    //     handleLoveHelper();
+        
+    //     //scorecard
+    //     ctx.fillStyle = gradient;
+    //     ctx.fillText('😴 ', 10, 45)
+    //     ctx.fillText('🚰 ', 10, 60)
+    //     ctx.fillText('age ', 10, 15)
+    //     ctx.fillRect(25, 39, (rest / 100) * 100, 5);
+    //     ctx.fillRect(25, 54, (thirst / 100) * 100, 5);
+        
+    //     ctx.fillStyle = gradient;
+    //     handleHealthHelper();
+        
+    // }
+
     
-    // ctx.fillStyle = gradient;
+    ctx.fillStyle = gradient;
 
     //scorecard
-    ctx.fillStyle = 'white';
-    // ctx.fillText(feeling, 10, 30)
+    // ctx.fillStyle = 'white';
     // ctx.fillText('😴 ', 10, 45)
     // ctx.fillText('🚰 ', 10, 60)
+    // ctx.fillText(feeling, 10, 30)
     ctx.fillText('💌 ', 10, 75)
+    // ctx.fillRect(25, 24, (life / 100) * 100, 5);
     ctx.fillText('evolve', 130, 15)
     ctx.beginPath();
     ctx.moveTo(125, 0);
@@ -144,10 +213,16 @@ function animate(){
     handleDecline();
     handleFeeling();
     handleEvolution();
-    
-    
     handleGameOver(); 
+    skipLevel();
+    addLove();
+}
 
+function addLove(){
+    window.addEventListener('keydown', (e) => {
+        if (e.code === "KeyL") love += 10
+        
+    })
 }
 
 
@@ -181,9 +256,7 @@ window.addEventListener('keydown', function(e){
         gameOver = false;
         gameOverText.classList.add('disappear')
         animate()
-        
     }
-
 })
 
 //click players
@@ -234,22 +307,54 @@ window.addEventListener('mouseup', function () {
     spacePressed = false;
 })
 
+function skipLevel(){
+    window.addEventListener('keydown', function (e) {
+        if (e.code === "ArrowRight" && !levelStarted) {
+            level++;
+            levelStarted = true;
+        }
 
-
+        if (e.code === "ArrowLeft" && levelStarted) {
+            level--;
+            levelStarted = false;
+        }
+    }) 
+}
 
 
 function handleEvolution(){
     // life > 100 && love > 100 && thirst > 100 && rest > 100
-    if (love > 100) {
-        ctx.fillStyle =  '#DBBC98';
-        ctx.fillText("Press up or click to evolve!", 160, canvas.height / 2 - 10  );
+        if (level === 0){   
+            if (love >= 100) {
+                ctx.fillStyle =  '#DBBC98';
+                ctx.fillText("Press up or click to evolve!", 160, canvas.height / 2 - 10  );
+                
+            
+                window.addEventListener('keydown', function (e) {
+                    if (e.code === "ArrowUp" && !levelStarted) {
+                        level++;
+                        levelStarted = true;
+                    }
 
-        window.addEventListener('keydown', function (e) {
-            if (e.code === "ArrowUp") level++
-        }) 
+                })
+            }
+        }
 
-    }
+        if (level === 1){
+            if (love >= 100 && life >= 100) {
+                ctx.fillStyle = '#DBBC98';
+                ctx.fillText("Press up or click to evolve!", 160, canvas.height / 2 - 10);
 
+
+                window.addEventListener('keydown', function (e) {
+                    if (e.code === "ArrowUp" && !levelStarted) {
+                        level++;
+                        levelStarted = true;
+                    }
+
+                })
+            }
+        }
 }
 
 
@@ -259,8 +364,6 @@ function handleThirstHelper(){
         ctx.fillText("i'm thirsty!", 160, canvas.height / 2 - 10);
         return true;
     }
-
-    
 }
 
 function handleRestHelper(){
@@ -272,7 +375,7 @@ function handleRestHelper(){
 }
 
 function handleLoveHelper() {
-    if (love <= 25) {
+    if (love <= 20) {
         ctx.fillStyle = '#DBBC98';
         ctx.fillText("i'm sad!", 160, canvas.height / 2 + 10);
         return true;
@@ -289,7 +392,7 @@ function handleHealthHelper(){
 
 
 function handleFeeling(){
-    life = (rest + thirst + love / 5  ) - damage;
+    // life = (rest + thirst + love / 5  ) - damage;
     feeling = '🙂';
     //if statement is faster than switch
     //else if doesn't work..
@@ -336,24 +439,29 @@ function handleFeeling(){
 }
 
 function handleDecline(){
+    //2. level
     if (level === 0){
         if (frame % 50 === 0) {
             love--;
         }
     } 
     
-        if (level > 0 && frame % 50 === 0) {
-            rest--;
-        }
+    if (level === 1 && frame % 50 === 0) {
+        love--;
+        life--;
+    }
 
-        if (level > 0 && frame % 50 === 0) {
-            thirst--;
-        }
+    if (level === 2 && frame % 50 === 0) {
+        love--;
+        life--;
+        rest--;
+        thirst--;
+    }
+
+    // if (level > 0 && frame % 50 === 0) {
+    // }
 
 
-        if (level > 0 && frame % 50 === 0) {
-            life--;
-        }
 
 
     
@@ -368,7 +476,7 @@ function handleGameOver(){
         }
     }
     
-    if (level > 0){
+    if (level === 1){
         if (life <= 0){
         ctx.fillStyle = '#DBBC98';
         ctx.fillText("You fainted! Try again!", 160, canvas.height / 2 - 10);

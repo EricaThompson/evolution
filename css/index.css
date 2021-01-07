@@ -37,12 +37,23 @@ html {
     animation: AnimationName 59s ease infinite; */
 }
 
+.level-0 {
+    background-image: none;
+}
+
 .level-1 {
-    background-image: url('../src//images/Background.jpg');
+    background-image: url('../src/images/Background.jpg');
     background-repeat: no-repeat;
     background-size: 200vw, 90vh;
     background-color: transparent;
     
+}
+
+.level-2 {
+    background-image: url('../src/images/level-2.jpg');
+    background-repeat: no-repeat;
+    background-size: 200vw, 90vh;
+    background-color: transparent;
 }
 
 /* @-webkit-keyframes AnimationName {

@@ -55,8 +55,11 @@ function handleHearts() {
                 love += 10;
                 heartArray[i].counted = true;
                 heartArray.splice(i, 1)
-            }
 
+                if (level > 0){
+                    life += 10;
+                }
+            }
         }
     }
 }
