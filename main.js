@@ -13,6 +13,8 @@ const age = document.querySelector('.year-count');
 const helper = document.querySelector('.helper')
 const evolver = document.querySelector('.evolver')
 const healthBar = document.querySelector('.health')
+const hungerBar = document.querySelector('.hunger')
+const thirstBar = document.querySelector('.thirst')
 // helper.classList.add('disappear')
 
 /*score is based on how many years 
@@ -111,7 +113,7 @@ function animate(){
     }
 
     if (level === 1){
-        // healthBar.classList.remove('disappear')
+        healthBar.classList.remove('disappear')
         // scorecard.classList.remove('disappear')
         // life = 100;
         if (!levelStarted) {
@@ -147,7 +149,8 @@ function animate(){
     if (level === 2){
         //background
         canvas.classList.add('level-2')
-
+        hungerBar.classList.remove('disappear')
+        thirstBar.classList.remove('disappear')
 
         //draw
         handlePillows();
