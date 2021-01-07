@@ -11,7 +11,8 @@ const loveScore = document.querySelector('.love-score');
 const loveProgressBar = document.querySelector('#love-progress');
 const age = document.querySelector('.year-count');
 const helper = document.querySelector('.helper')
-helper.classList.add('disappear')
+const evolver = document.querySelector('.evolver')
+// helper.classList.add('disappear')
 
 /*score is based on how many years 
 it took you to become the astronaut.*/
@@ -344,13 +345,13 @@ window.addEventListener('keyup', function (e) {
     if (e.code === "Space") spacePressed = false;
 })
 
-window.addEventListener('mousedown', function () {
-    spacePressed = true;
-})
+// window.addEventListener('mousedown', function () {
+//     spacePressed = true;
+// })
 
-window.addEventListener('mouseup', function () {
-    spacePressed = false;
-})
+// window.addEventListener('mouseup', function () {
+//     spacePressed = false;
+// })
 
 function skipLevel(){
     window.addEventListener('keydown', function (e) {
@@ -371,17 +372,29 @@ function handleEvolution(){
     // life > 100 && love > 100 && thirst > 100 && rest > 100
         if (level === 0){   
             if (love >= 100) {
-                ctx.fillStyle =  '#DBBC98';
-                ctx.fillText("Press up or click to evolve!", 160, canvas.height / 2 - 10  );
-                
+                // ctx.fillStyle =  '#DBBC98';
+                // ctx.fillText("Press up or click to evolve!", 160, canvas.height / 2 - 10  );
+                evolver.classList.remove('disappear')
             
-                window.addEventListener('keydown', function (e) {
-                    if (e.code === "ArrowUp" && !levelStarted) {
+                evolver.addEventListener('click', function (e) {
+                    if (!levelStarted){
                         level++;
                         levelStarted = true;
                     }
 
+                    // if (e.code === "ArrowUp" && !levelStarted) {
+                    // }
                 })
+
+                window.addEventListener('keydown', function(e){
+                    if (e.code === 'ArrowUp' && !levelStarted){
+                        level++;
+                        levelStarted = true;
+                        evolver.classList.add('disappear')
+                    }
+                })
+            } else {
+                evolver.classList.add('disappear')
             }
         }
 
