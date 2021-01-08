@@ -247,11 +247,11 @@ function animate(){
     
     // ctx.fillRect(25, 69, (love / 100) * 100, 5);
     //! this gameover
-    // if (handleGameOver()){
-    //     gameOver = true;
-    //     gameOverText.classList.remove('disappear')
-    //     return;
-    // }
+    if (handleGameOver()){
+        gameOver = true;
+        gameOverText.classList.remove('disappear')
+        return;
+    }
     requestAnimationFrame(animate);
     // angle+=0.1;
     hue++;
@@ -541,7 +541,7 @@ function handleDecline(){
     if (level > 0 && level <= 2 && frame % 50 === 0) {
         life--;
         healthProgressBar.value = life;
-        
+
         console.log("life: ", life)
     }
 
@@ -566,6 +566,7 @@ function handleGameOver(){
         if (love <= 0) {
             ctx.fillStyle = '#DBBC98';
             ctx.fillText('Your heart was broken! Try again!', 160, canvas.height / 2 - 10);
+            tryAgain.classList.remove('disappear')
             return true;
         }
     }
