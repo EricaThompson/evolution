@@ -81,8 +81,8 @@ function background(){
 }
 
 
-scorecard.classList.remove('disappear')
 function animate(){
+    scorecard.classList.remove('disappear')
     // console.log(level)
     welcome.classList.add('disappear')
     ctx.clearRect(0,0, canvas.width, canvas.height);
@@ -183,6 +183,9 @@ function animate(){
         congrats.classList.remove('disappear')
         ctx.fillStyle = gradient;
         ctx.fillText('🎉', 10, 45)
+        gameOverText.classList.remove('disappear')
+
+
 
     }
 
@@ -340,6 +343,12 @@ tryAgain.addEventListener('click', function(){
         gameOverText.classList.add('disappear')
         animate()
     }
+
+    if (level === 3){
+        window.location.reload()
+    }
+
+    
 })
 
 
