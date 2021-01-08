@@ -204,7 +204,7 @@ button {
 
 .scorecard {
     width: 20vw;
-    height: 30vh;
+    height: 15vw;
     padding-bottom: 10px;
     font-family: 'Roboto', sans-serif;
     position: absolute;
@@ -229,6 +229,25 @@ button {
     font-size: 1.5vw;
 }
 
+.score {
+    position: absolute;
+    z-index: 200;
+    font-size: 3vw;
+    width: 40vw;
+    top: 60%;
+    left: 30%;
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(270deg, rgba(221, 255, 0, 0.604), rgba(255, 0, 140, 0.598));
+    background-size: 400% 400%;
+    text-align: center;
+    color: yellow;
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+    -webkit-animation: AnimationName 59s ease infinite;
+    -moz-animation: AnimationName 59s ease infinite;
+    animation: AnimationName 59s ease infinite;
+
+}
+
 .line {
     display: block;
     position: absolute;
@@ -240,7 +259,7 @@ button {
     padding-top: 3vh;
 }
 
-#love-progress {
+#love-progress, #health-progress, #thirst-progress, #rest-progress {
     width: 12.5vw;
     /* background-color: yellow; */
 }
@@ -394,7 +413,8 @@ button {
     position: absolute;
     z-index: 200;
     bottom: 15vh;
-    left: 40vw;
+    left: 45vw;
+    background-color: yell
 }
 
 .disappear {

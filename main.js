@@ -24,6 +24,8 @@ const restBar = document.querySelector('.rest')
 const restProgressBar = document.querySelector('#rest-progress')
 const thirstBar = document.querySelector('.thirst')
 const thirstProgressBar = document.querySelector('#thirst-progress')
+const scoreBox = document.querySelector('.score');
+const scoreNum = document.querySelector('.score-num')
 // healthHelper.classList.add('disappear')
 // thirstHelper.classList.add('disappear')
 // loveHelper.classList.add('disappear')
@@ -54,6 +56,7 @@ let year = 0;
 let time = 0;
 let mode = '';
 let suddenEnd = false;
+let score;
 
 
 
@@ -83,12 +86,7 @@ function background(){
     
     //! why are the items disappearing in the center? tama?
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    // handleHearts();
-    // handleBeverages();
-    // handlePillows();
-    // tama.update();
-    // tama.draw(); 
-    // level = 2;
+
 
     handleStars();
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -126,11 +124,14 @@ function unlimited(){
     // damage = 0;
     scorecard.classList.remove('disappear')
     welcome.classList.add('disappear')
+    scoreBox.classList.add('disappear')
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     canvas.classList.add('level-3')
     restBar.classList.remove('disappear')
     thirstBar.classList.remove('disappear')
     healthBar.classList.remove('disappear')
+    scoreNum.innerHTML = year;
+
     handleExhaust();
     tama.update();
     tama.draw();
@@ -150,6 +151,7 @@ function unlimited(){
     if (handleGameOver()) {
         gameOver = true;
         tryAgain.classList.remove('disappear')
+        scoreNum.innerHTML = year;
         return;
     }
     requestAnimationFrame(unlimited);
@@ -165,6 +167,7 @@ function unlimited(){
 
 function campaign(){
     scorecard.classList.remove('disappear')
+    scoreBox.classList.add('disappear')
     // console.log(level)
     welcome.classList.add('disappear')
     ctx.clearRect(0,0, canvas.width, canvas.height);
@@ -178,6 +181,8 @@ function campaign(){
     canvas.classList.remove('level-3')
     thirstBar.classList.add('disappear')
     restBar.classList.add('disappear')
+    scoreNum.innerHTML = year;
+    
 
     handleExhaust();
     tama.update();
@@ -185,10 +190,7 @@ function campaign(){
 
     if (level === 0){ 
         canvas.classList.add('level-0')
-    
         age.innerHTML = year;
-
-
         handleHearts();
         handleStars();
         handleLoveHelper(); 
@@ -254,6 +256,7 @@ function campaign(){
     if (handleGameOver()){
         gameOver = true;
         tryAgain.classList.remove('disappear')
+        
         return;
     }
     requestAnimationFrame(campaign);
@@ -269,10 +272,22 @@ function campaign(){
 }
 
 function handleAge(){
-    if (frame % 2050 === 0) {
+    if (mode === "unlimited" && life > 80 && love > 80 && thirst > 80 && rest > 80 && frame % 50 === 0) {
         year++;
     }
+    // console.log('age: ',year)
+    if (mode === 'campaign'){
+        if (level === 0 && love > 80 && frame % 50 === 0){
+            year++
+        }
+    }
 }
+
+// function handleScore(){
+//     if (frame % 2050 === 0) {
+//         year++;
+//     }
+// }
 
 function addStats(){
     window.addEventListener('keydown', (e) => {
@@ -303,6 +318,7 @@ window.addEventListener('keydown', function(e){
         gamespeed = 2;
         feeling = '🙂';
         damage = 0;
+        year = 0;
         // let life = 100;
         life = 1;
         gameStarted = true;
@@ -320,9 +336,11 @@ campaignBtn.addEventListener('mousedown', function (e) {
         // console.log('pressed')
         gameStarted = true;
         gameOver = false;
+        // year = 0;
+        mode = 'campaign'
         campaign()
         // handleEndBackground()
-        mode = 'campaign'
+        // mode = 'campaign'
     }
 })
 
@@ -355,8 +373,10 @@ tryAgain.addEventListener('click', function(){
         gameOverContainer.classList.add('disappear')
 
         if (mode === 'campaign'){
+            year = 0;
             campaign()
         } else {
+            year = 0;
             unlimited()
         }
 
@@ -645,43 +665,6 @@ function handleDecline(){
 
 
 function handleGameOver(){
-    // if (mode === 'unlimited'){
-    //     if (love <= 0) {
-    //         // ctx.fillStyle = '#DBBC98';
-    //         // ctx.fillText('Your heart was broken! Try again!', 160, canvas.height / 2 - 10);
-    //         tryAgain.classList.remove('disappear')
-    //         gameOverContainer.classList.remove('disappear')
-    //         gameOverText.innerHTML = 'my heart is broken! try again!';
-    //         return true;
-    //     }
-    //     if (life <= 0) {
-    //         // ctx.fillStyle = '#DBBC98';
-    //         // ctx.fillText("You fainted! Try again!", 160, canvas.height / 2 - 10);
-    //         gameOverContainer.classList.remove('disappear')
-    //         gameOverText.innerHTML = 'i fainted! try again!';
-    //         return true;
-    //     }
-    //     if (thirst <= 0) {
-    //         // ctx.fillStyle = '#DBBC98';
-    //         // ctx.fillText("You're too thirsty! Try again!", 160, canvas.height / 2 - 10);
-    //         gameOverContainer.classList.remove('disappear')
-    //         gameOverText.innerHTML = "i'm too thirsty! try again!";
-    //         return true;
-    //     }
-
-    //     if (rest <= 0) {
-    //         // ctx.fillStyle = '#DBBC98';
-    //         // ctx.fillText('Not enough sleep! Try again!', 160, canvas.height / 2 - 10);
-    //         gameOverContainer.classList.remove('disappear')
-    //         gameOverText.innerHTML = "i'm too tired! try again!";
-    //         return true;
-    //     }
-
-    // }
-    // if(mode){
-
-    //     console.log(love, life, thirst, rest)
-    // }
 
     if (level >= 0 || mode === 'unlimited'){
         if (love <= 0) {
@@ -690,6 +673,7 @@ function handleGameOver(){
             tryAgain.classList.remove('disappear')
             gameOverContainer.classList.remove('disappear')
             gameOverText.innerHTML = 'my heart is broken! try again!';
+            scoreBox.classList.remove('disappear')
             return true;
         }
     }
@@ -701,6 +685,7 @@ function handleGameOver(){
             gameOverContainer.classList.remove('disappear')
             healthHelper.classList.remove('disappear')
             gameOverText.innerHTML = 'i fainted! try again!';
+            scoreBox.classList.remove('disappear')
             return true;
         }
 
@@ -712,6 +697,7 @@ function handleGameOver(){
             // ctx.fillText("You're too thirsty! Try again!", 160, canvas.height / 2 - 10);
             gameOverContainer.classList.remove('disappear')
             gameOverText.innerHTML = "i'm too thirsty! try again!";
+            scoreBox.classList.remove('disappear')
             return true;
         } 
     
@@ -720,6 +706,7 @@ function handleGameOver(){
             // ctx.fillText('Not enough sleep! Try again!', 160, canvas.height / 2 - 10);
             gameOverContainer.classList.remove('disappear')
             gameOverText.innerHTML = "i'm too tired! try again!";
+            scoreBox.classList.remove('disappear')
             return true;
         }
     }
