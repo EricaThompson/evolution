@@ -12,6 +12,7 @@ const loveScore = document.querySelector('.love-score');
 const loveProgressBar = document.querySelector('#love-progress');
 const age = document.querySelector('.year-count');
 const helper = document.querySelector('.helper')
+const loveHelper = document.querySelector('.love-helper')
 const evolver = document.querySelector('.evolver')
 const healthBar = document.querySelector('.health')
 const healthProgressBar = document.querySelector('#health-progress')
@@ -475,10 +476,20 @@ function handleLoveHelper() {
         // ctx.fillStyle = '#DBBC98';
         // ctx.fillText("i'm sad!", 160, canvas.height / 2 + 10);
         helper.classList.remove('disappear')
+        loveHelper.classList.remove('disappear')
+        return true;
+    }
+    helper.classList.add('disappear')
+}
+
+function handleHealthHelper() {
+    if (life < 20) {
+        // ctx.fillStyle = '#DBBC98';
+        // ctx.fillText("i'm injured!", 160, canvas.height / 2 + 20);
+        
         return true;
     }
 
-    helper.classList.add('disappear')
 }
 
 function handleThirstHelper(){
@@ -497,13 +508,7 @@ function handleRestHelper(){
     }
 }
 
-function handleHealthHelper(){
-    if (life < 20) {
-        ctx.fillStyle = '#DBBC98';
-        ctx.fillText("i'm injured!", 160, canvas.height / 2 + 20);
-        return true;
-    }
-}
+
 
 
 function handleFeeling(){

@@ -243,11 +243,12 @@ button {
     animation: AnimationName 59s ease infinite;
 }
 
-.love-helper {
+.love-helper, .health-helper, .hunger-helper, .thirst-helper {
     font-size: 2vw;
+    display: block;
 }
 
-.helper {
+.love-helper, .hunger-helper, .thirst-helper, .health-helper {
     display:flex;
     background-color:#fff;
     /* padding:20px; */
@@ -269,7 +270,23 @@ button {
     /* display: none; */
 }
 
-.helper:before, .helper:after {
+.hunger-helper {
+    margin-top: -115vh;
+    margin-left: 45vw;
+}
+
+.health-helper {
+    top: -35vh;
+    left: 11vw;
+}
+
+.thirst-helper {
+    top: -96vh;
+    left: 30vw;
+}
+
+.love-helper:before, 
+.love-helper:after {
     content:"";
     background-color:#fff;
     border-radius:50%;
@@ -278,14 +295,53 @@ button {
     z-index:-1;
 }
 
-.helper:before {
+.health-helper:before,
+.health-helper:after {
+    content:"";
+    background-color:#fff;
+    border-radius:50%;
+    display:block;
+    position:absolute;
+    z-index:-1;
+}
+
+.thirst-helper:before,
+.thirst-helper:after {
+    content:"";
+    background-color:#fff;
+    border-radius:50%;
+    display:block;
+    position:absolute;
+    z-index:-1;
+}
+
+.hunger-helper:before,
+.hunger-helper:after {
+    content:"";
+    background-color:#fff;
+    border-radius:50%;
+    display:block;
+    position:absolute;
+    z-index:-1;
+}
+
+
+
+.love-helper:before,
+.health-helper:before,
+.hunger-helper:before,
+.thirst-helper:before{
     width:44px;
     height:44px;
     top:-12px;
     left:28px;
     box-shadow:-50px 30px 0 -12px #fff;
 }
-.helper:after {
+
+.love-helper:after,
+.health-helper:after,
+.hunger-helper:after,
+.thirst-helper:after {
     bottom:-10px;
     right:26px;
     width:30px;
