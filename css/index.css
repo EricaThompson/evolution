@@ -266,7 +266,6 @@ button {
     margin-left: 28vw;
     font-weight: bolder;
     /* padding: 0px; */
-
     /* display: none; */
 }
 
@@ -277,7 +276,6 @@ button {
     display:block;
     position:absolute;
     z-index:-1;
-
 }
 
 .helper:before {
@@ -318,8 +316,8 @@ button {
 
 .disappear {
     display: none;
-    
 }
+
 @-webkit-keyframes AnimationName {
     0%{background-position:0% 50%}
     50%{background-position:100% 50%}

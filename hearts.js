@@ -59,6 +59,7 @@ function handleHearts() {
 
                 if (level > 0){
                     life += 10;
+                    healthProgressBar.level += 10;
                 }
 
                 // if (level > 0 && level < 3){

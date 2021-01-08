@@ -36,7 +36,7 @@ let love = 25;
 let gamespeed = 2;
 let feeling = '🙂';
 let damage = 0;
-let life = 100 ;
+let life = 25 ;
 let level = 0;
 let year = 0;
 let time = 0;
@@ -117,6 +117,8 @@ function animate(){
 
     if (level === 1){
         healthBar.classList.remove('disappear')
+        // love = 25;
+        // life = 25;
         // scorecard.classList.remove('disappear')
         // life = 100;
         if (!levelStarted) {
@@ -352,6 +354,7 @@ tryAgain.addEventListener('click', function(){
         damage = 0;
         // let life = 100;
         life = 1;
+        level = 0;
         gameStarted = true;
         gameOver = false;
         tryAgain.classList.add('disappear')
@@ -410,10 +413,15 @@ function handleEvolution(){
                     if (!levelStarted){
                         level++;
                         levelStarted = true;
+                        life = 25
+                        love = 25
+                        thirst = 25
+                        rest = 25
                     }
 
                     // if (e.code === "ArrowUp" && !levelStarted) {
                     // }
+                    
                 })
 
                 window.addEventListener('keydown', function(e){
@@ -421,6 +429,11 @@ function handleEvolution(){
                         level++;
                         levelStarted = true;
                         evolver.classList.add('disappear')
+                        life = 25
+                        love = 25
+                        thirst = 25
+                        rest = 25
+
                     }
                 })
             } else {
@@ -546,14 +559,13 @@ function handleDecline(){
         if (frame % 50 === 0) {
             love--;
             loveProgressBar.value = love;
-            console.log('love: ', love)
+            // console.log('love: ', love)
         }
     } 
     
     if (level > 0 && level <= 2 && frame % 50 === 0) {
         life--;
         healthProgressBar.value = life;
-
         console.log("life: ", life)
     }
 
