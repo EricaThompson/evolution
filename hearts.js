@@ -44,7 +44,7 @@ function handleHearts() {
     }
 
     //to not have too many heart for performance
-    if (heartArray.length > 200) {
+    if (heartArray.length > 300) {
         heartArray.pop(heartArray[0])
     }
 

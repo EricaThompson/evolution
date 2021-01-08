@@ -40,29 +40,33 @@ html {
 .level-0 {
     background-image: url('../src/images/level-0.jpg');
     background-repeat: no-repeat;
-    background-size: 200vw, 90vh;
+    background-size: 300vw, 300vh;
     background-color: transparent;
+    background-position: 90% 70%;
 }
 
 .level-1 {
     background-image: url('../src/images/level-1.jpg');
     background-repeat: no-repeat;
-    background-size: 200vw, 90vh;
+    background-size: 500vw, 120vh;
     background-color: transparent;
+    background-position: 80% 100%;
 }
 
 .level-2 {
     background-image: url('../src/images/level-2.jpg');
     background-repeat: no-repeat;
-    background-size: 200vw, 90vh;
+    background-size: 500vw, 90vh;
     background-color: transparent;
+    background-position: 80% 100%;
 }
 
 .level-3 {
     background-image: url('../src/images/level-3.jpg');
     background-repeat: no-repeat;
-    background-size: 255vw, 90vh;
+    background-size: 500vw, 90vh;
     background-color: transparent;
+    background-position: 80% 100%;
 }
 
 /* @-webkit-keyframes AnimationName {
@@ -156,26 +160,43 @@ button {
 
 .congrats {
     position: absolute;
-    display: flex;
     /* align-items: center; */
     z-index: 2;
-    display: block;
+    /* display: block; */
+    display: flex;
     text-align: center;
-    width: 35vw;
+    width: 80vw;
     height: 25vh;
-    
+    color: white;
+    align-items: center;
+    justify-content: center;
     top: 40%;
-    left: 30%;
+    left: 10%;
     border-radius: 4px;
     box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
     font-family: 'Roboto', sans-serif;
     /* border: 1px solid pink; */
-    background: linear-gradient(270deg, rgba(225, 0, 255, 0.2), rgba(0, 255, 221, 0.2));
+    background: linear-gradient(270deg,rgba(98, 0, 255, 0.714),  rgba(255, 183, 0, 0.714));
     background-size: 400% 400%;
-
+    font-size:6vh;
     -webkit-animation: AnimationName 59s ease infinite;
     -moz-animation: AnimationName 59s ease infinite;
     animation: AnimationName 59s ease infinite;
+    /* opacity: 1; */
+}
+
+.copy {
+    /* display: flex;
+    align-items: center; */
+    /* height: 10vh; */
+    /* align-items: center; */
+    font-weight: lighter;
+    height: 18vh;
+    /* border: 1px solid hotpink; */
+    /* color:rgba(0, 255, 221, 0.2); */
+    /* align-self: center; */
+    /* margin-top: 10px; */
+
 }
 
 .scorecard {
@@ -364,9 +385,7 @@ button {
     font-weight: bolder;
 }
 
-.copy {
-    color:rgba(0, 255, 221, 0.2)
-}
+
 
 .try-again {
     position: absolute;
