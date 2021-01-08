@@ -13,6 +13,7 @@ const age = document.querySelector('.year-count');
 const helper = document.querySelector('.helper')
 const evolver = document.querySelector('.evolver')
 const healthBar = document.querySelector('.health')
+const healthProgressBar = document.querySelector('#health-progress')
 const hungerBar = document.querySelector('.hunger')
 const thirstBar = document.querySelector('.thirst')
 // helper.classList.add('disappear')
@@ -38,6 +39,7 @@ let life = 100 ;
 let level = 0;
 let year = 0;
 let time = 0;
+healthProgressBar.value = life;
 
 // let statusColor = 'linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%)';
 let gameStarted = false;
@@ -138,10 +140,10 @@ function animate(){
         
         //score
         ctx.fillStyle = gradient;
-        ctx.fillText(feeling, 10, 30)
-        ctx.fillRect(25, 24, ((life - damage) / 100) * 100, 5);
-        ctx.fillRect(25, 69, (love / 100) * 100, 5);
-        ctx.fillText('💌 ', 10, 75)
+        // ctx.fillText(feeling, 10, 30)
+        // ctx.fillRect(25, 24, ((life - damage) / 100) * 100, 5);
+        // ctx.fillRect(25, 69, (love / 100) * 100, 5);
+        // ctx.fillText('💌 ', 10, 75)
         // ctx.fillText('age ', 10, 15)
         levelStarted = false;
     }
@@ -167,14 +169,14 @@ function animate(){
 
         //score
         ctx.fillStyle = gradient;
-        ctx.fillText(feeling, 10, 30)
-        ctx.fillRect(25, 24, ((life - damage) / 100) * 100, 5);
-        ctx.fillText('😴 ', 10, 45)
-        ctx.fillRect(25, 39, (rest / 100) * 100, 5);
-        ctx.fillText('🚰 ', 10, 60)
-        ctx.fillRect(25, 54, (thirst / 100) * 100, 5);
-        ctx.fillRect(25, 69, (love / 100) * 100, 5);
-        ctx.fillText('💌 ', 10, 75)
+        // ctx.fillText(feeling, 10, 30)
+        // ctx.fillRect(25, 24, ((life - damage) / 100) * 100, 5);
+        // ctx.fillText('😴 ', 10, 45)
+        // ctx.fillRect(25, 39, (rest / 100) * 100, 5);
+        // ctx.fillText('🚰 ', 10, 60)
+        // ctx.fillRect(25, 54, (thirst / 100) * 100, 5);
+        // ctx.fillRect(25, 69, (love / 100) * 100, 5);
+        // ctx.fillText('💌 ', 10, 75)
         levelStarted = false;
     }
 
@@ -244,11 +246,12 @@ function animate(){
     // ctx.fillStyle = gradient;
     
     // ctx.fillRect(25, 69, (love / 100) * 100, 5);
-    if (handleGameOver()){
-        gameOver = true;
-        gameOverText.classList.remove('disappear')
-        return;
-    }
+    //! this gameover
+    // if (handleGameOver()){
+    //     gameOver = true;
+    //     gameOverText.classList.remove('disappear')
+    //     return;
+    // }
     requestAnimationFrame(animate);
     // angle+=0.1;
     hue++;
@@ -256,7 +259,7 @@ function animate(){
     handleDecline();
     handleFeeling();
     handleEvolution();
-    handleGameOver(); 
+    // handleGameOver(); 
     skipLevel();
     addStats();
     handleAge();
@@ -527,16 +530,19 @@ function handleFeeling(){
 
 function handleDecline(){
     //2. level
-    if (level === 0){
+    if (level <= 2){
         if (frame % 50 === 0) {
             love--;
-            loveProgressBar.value -= 1;
+            loveProgressBar.value = love;
+            console.log('love: ', love)
         }
     } 
     
-    if (level === 1 && frame % 50 === 0) {
-        love--;
+    if (level > 0 && level <= 2 && frame % 50 === 0) {
         life--;
+        healthProgressBar.value = life;
+        
+        console.log("life: ", life)
     }
 
     if (level === 2 && frame % 50 === 0) {
