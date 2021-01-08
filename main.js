@@ -402,13 +402,21 @@ window.addEventListener('keyup', function (e) {
     if (e.code === "Space") spacePressed = false;
 })
 
-// window.addEventListener('mousedown', function () {
-//     spacePressed = true;
-// })
+window.addEventListener('mousedown', function () {
+    spacePressed = true;
+})
 
-// window.addEventListener('mouseup', function () {
-//     spacePressed = false;
-// })
+window.addEventListener('mouseup', function () {
+    spacePressed = false;
+})
+
+window.addEventListener('touchstart', function () {
+    spacePressed = true;
+})
+
+window.addEventListener('touchend', function () {
+    spacePressed = false;
+})
 
 function skipLevel(){
     window.addEventListener('keydown', function (e) {
