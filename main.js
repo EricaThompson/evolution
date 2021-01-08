@@ -9,15 +9,25 @@ const congrats = document.querySelector('.congrats');
 
 const scorecard = document.querySelector('.scorecard');
 const loveScore = document.querySelector('.love-score');
-const loveProgressBar = document.querySelector('#love-progress');
 const age = document.querySelector('.year-count');
 const helper = document.querySelector('.helper')
 const loveHelper = document.querySelector('.love-helper')
+const healthHelper = document.querySelector('.health-helper')
+const restHelper = document.querySelector('.rest-helper')
+const thirstHelper = document.querySelector('.thirst-helper')
 const evolver = document.querySelector('.evolver')
 const healthBar = document.querySelector('.health')
+const loveProgressBar = document.querySelector('#love-progress');
 const healthProgressBar = document.querySelector('#health-progress')
-const hungerBar = document.querySelector('.hunger')
+const restBar = document.querySelector('.rest')
+const restProgressBar = document.querySelector('#rest-progress')
 const thirstBar = document.querySelector('.thirst')
+const thirstProgressBar = document.querySelector('#thirst-progress')
+// healthHelper.classList.add('disappear')
+// thirstHelper.classList.add('disappear')
+// loveHelper.classList.add('disappear')
+// restHelper.classList.add('disappear')
+
 // helper.classList.add('disappear')
 
 /*score is based on how many years 
@@ -90,6 +100,16 @@ function animate(){
     // console.log(level)
     welcome.classList.add('disappear')
     ctx.clearRect(0,0, canvas.width, canvas.height);
+    healthHelper.classList.add('disappear')
+    thirstHelper.classList.add('disappear')
+    loveHelper.classList.add('disappear')
+    restHelper.classList.add('disappear')
+    healthBar.classList.add('disappear')
+    canvas.classList.remove('level-1')
+    canvas.classList.remove('level-2')
+    canvas.classList.remove('level-3')
+    thirstBar.classList.add('disappear')
+    restBar.classList.add('disappear')
 
     // ctx.fillRect(10,canvas.height - 90,50,50);
     // handleObstacles();
@@ -102,7 +122,8 @@ function animate(){
     
     if (level === 0){ 
         canvas.classList.add('level-0')
-        canvas.classList.remove('level-1')
+        
+
         age.innerHTML = year;
         // loveScore.innerHTML = `love`;
         // loveProgressBar.value -= love;
@@ -155,9 +176,9 @@ function animate(){
     if (level === 2){
         //background
         canvas.classList.add('level-2')
-        hungerBar.classList.remove('disappear')
+        restBar.classList.remove('disappear')
         thirstBar.classList.remove('disappear')
-
+        healthBar.classList.remove('disappear')
         //draw
         handlePillows();
         handleBeverages();
@@ -188,9 +209,9 @@ function animate(){
         canvas.classList.add('level-3')
         congrats.classList.remove('disappear')
         ctx.fillStyle = gradient;
-        ctx.fillText('🎉', 10, 45)
+        // ctx.fillText('🎉', 10, 45)
         tryAgain.classList.remove('disappear')
-
+        scorecard.classList.add('disappear')
 
 
     }
@@ -251,6 +272,7 @@ function animate(){
     
     // ctx.fillRect(25, 69, (love / 100) * 100, 5);
 
+    handleDecline();
     if (handleGameOver()){
         gameOver = true;
         tryAgain.classList.remove('disappear')
@@ -260,7 +282,6 @@ function animate(){
     // angle+=0.1;
     hue++;
     frame++;
-    handleDecline();
     handleFeeling();
     handleEvolution();
     // handleGameOver(); 
@@ -354,12 +375,14 @@ tryAgain.addEventListener('click', function(){
         feeling = '🙂';
         damage = 0;
         // let life = 100;
-        life = 1;
+        life = 25;
         level = 0;
         gameStarted = true;
         gameOver = false;
         tryAgain.classList.add('disappear')
         gameOverContainer.classList.add('disappear')
+
+
         animate()
     }
 
@@ -468,6 +491,32 @@ function handleEvolution(){
                 evolver.classList.add('disappear')
             }
         }
+
+        if (level > 1){
+            if (love >= 100 && life >= 100 && rest >= 100 && thirst >= 100) {
+                evolver.classList.remove('disappear')
+
+                evolver.addEventListener('click', function (e) {
+                    if (!levelStarted) {
+                        level++;
+                        levelStarted = true;
+                    }
+
+                    // if (e.code === "ArrowUp" && !levelStarted) {
+                    // }
+                })
+
+                window.addEventListener('keydown', function (e) {
+                    if (e.code === 'ArrowUp' && !levelStarted) {
+                        level++;
+                        levelStarted = true;
+                        evolver.classList.add('disappear')
+                    }
+                })
+            } else {
+                evolver.classList.add('disappear')
+            }
+        }
 }
 
 
@@ -475,35 +524,47 @@ function handleLoveHelper() {
     if (love <= 20) {
         // ctx.fillStyle = '#DBBC98';
         // ctx.fillText("i'm sad!", 160, canvas.height / 2 + 10);
-        helper.classList.remove('disappear')
+        // helper.classList.remove('disappear')
         loveHelper.classList.remove('disappear')
         return true;
+    } else {
+
+        loveHelper.classList.add('disappear')
     }
-    helper.classList.add('disappear')
 }
 
 function handleHealthHelper() {
-    if (life < 20) {
+    if (life <= 20 && level > 0) {
         // ctx.fillStyle = '#DBBC98';
         // ctx.fillText("i'm injured!", 160, canvas.height / 2 + 20);
-        
+        // helper.classList.remove('disappear')
+        healthHelper.classList.remove('disappear')
         return true;
+    } else {
+        healthHelper.classList.add('disappear')
+
     }
 
 }
 
 function handleThirstHelper(){
-    if (thirst < 20) {
-        ctx.fillStyle = '#DBBC98';
-        ctx.fillText("i'm thirsty!", 160, canvas.height / 2 - 10);
+    if (thirst <= 20 && level > 1) {
+        // console.log('thirst helper?')
+        // ctx.fillStyle = '#DBBC98';
+        // ctx.fillText("i'm thirsty!", 160, canvas.height / 2 - 10);
+        // helper.classList.remove('disappear')
+        thirstHelper.classList.remove('disappear')
         return true;
     }
 }
 
 function handleRestHelper(){
-    if (rest < 20) {
-        ctx.fillStyle = '#DBBC98';
-        ctx.fillText("i'm tired!", 160, canvas.height / 2);
+    if (rest <= 20 && level > 1) {
+        // console.log('rest helper?')
+        // ctx.fillStyle = '#DBBC98';
+        // ctx.fillText("i'm tired!", 160, canvas.height / 2);
+        // helper.classList.remove('disappear')
+        restHelper.classList.remove('disappear')
         return true;
     }
 }
@@ -574,12 +635,22 @@ function handleDecline(){
         console.log("life: ", life)
     }
 
-    if (level === 2 && frame % 50 === 0) {
-        love--;
-        life--;
-        rest--;
+    if (level > 1 && level <= 2 && frame % 50 === 0){
         thirst--;
+        thirstProgressBar.value = thirst;
+        rest--;
+        restProgressBar.value = rest;
+        console.log(thirst, rest)
+
+
     }
+
+    // if (level === 2 && frame % 50 === 0) {
+    //     love--;
+    //     life--;
+    //     rest--;
+    //     thirst--;
+    // }
 
     // if (level > 0 && frame % 50 === 0) {
     // } 
@@ -589,7 +660,7 @@ function handleDecline(){
 
 
 function handleGameOver(){
-    if (level === 0){
+    if (level >= 0){
         if (love <= 0) {
             // ctx.fillStyle = '#DBBC98';
             // ctx.fillText('Your heart was broken! Try again!', 160, canvas.height / 2 - 10);
@@ -600,31 +671,43 @@ function handleGameOver(){
         }
     }
     
-    if (level === 1){
+    if (level > 0){
         if (life <= 0){
-        ctx.fillStyle = '#DBBC98';
-        ctx.fillText("You fainted! Try again!", 160, canvas.height / 2 - 10);
-        return true;
+        // ctx.fillStyle = '#DBBC98';
+        // ctx.fillText("You fainted! Try again!", 160, canvas.height / 2 - 10);
+            gameOverContainer.classList.remove('disappear')
+            gameOverText.innerHTML = 'i fainted! try again!';
+            return true;
         }
 
+    }
+
+    if (level > 1){
         if (thirst <= 0) {
-            ctx.fillStyle = '#DBBC98';
-            ctx.fillText("You're too thirsty! Try again!", 160, canvas.height / 2 - 10);
+            // ctx.fillStyle = '#DBBC98';
+            // ctx.fillText("You're too thirsty! Try again!", 160, canvas.height / 2 - 10);
+            gameOverContainer.classList.remove('disappear')
+            gameOverText.innerHTML = "i'm too thirsty! try again!";
             return true;
         } 
-
+    
         if (rest <= 0) {
-            ctx.fillStyle = '#DBBC98';
-            ctx.fillText('Not enough sleep! Try again!', 160, canvas.height / 2 - 10);
-            return true;
-        }
-
-        if (love <= 0) {
-            ctx.fillStyle = '#DBBC98';
-            ctx.fillText('Your heart was broken! Try again!', 160, canvas.height / 2 - 10);
+            // ctx.fillStyle = '#DBBC98';
+            // ctx.fillText('Not enough sleep! Try again!', 160, canvas.height / 2 - 10);
+            gameOverContainer.classList.remove('disappear')
+            gameOverText.innerHTML = "i'm too tired! try again!";
             return true;
         }
     }
+
+
+        // if (love <= 0) {
+        //     // ctx.fillStyle = '#DBBC98';
+        //     // ctx.fillText('Your heart was broken! Try again!', 160, canvas.height / 2 - 10);
+
+        //     return true;
+        // }
+    
 }
 
 
