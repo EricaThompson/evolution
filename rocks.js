@@ -6,7 +6,7 @@ class Rock {
     constructor() {
         this.x = canvas.width;
         this.y = Math.random() * canvas.height;
-        this.radius = 7;
+        this.radius = 5;
         this.speed = Math.random() * 5 + 1;
         this.distance;
         this.counted = false;
@@ -47,12 +47,12 @@ class Rock {
 
     draw() {
         //hitbox
-        // ctx.fillStyle = 'red';
-        // ctx.beginPath();
-        // ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2)
-        // ctx.fill();
+        ctx.fillStyle = 'red';
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2)
+        ctx.fill();
 
-        ctx.drawImage(rockImage, this.frameX * this.spriteWidth, this.frameY * this.spriteHeight, this.spriteWidth, this.spriteHeight, this.x - 10, this.y - 11, canvas.height / 20, canvas.width / 30)
+        ctx.drawImage(rockImage, this.frameX * this.spriteWidth, this.frameY * this.spriteHeight, this.spriteWidth, this.spriteHeight, this.x - 10, this.y - 11, canvas.width / 18 , canvas.height / 20)
         //old rock
         // const rock = new Image();
         // rock.src = 'ROCK.png';

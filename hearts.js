@@ -28,7 +28,7 @@ class Heart {
         // ctx.fill();
 
         
-        ctx.drawImage(heart, this.x, this.y, canvas.height / 20, canvas.width / 30);
+        ctx.drawImage(heart, this.x, this.y, canvas.width / 26, canvas.height / 22 );
     }
 
 }
