@@ -21,7 +21,7 @@ class Pillow {
     }
 
     draw() {
-        ctx.drawImage(pillow, this.x, this.y, canvas.height / 20, 15);
+        ctx.drawImage(pillow, this.x, this.y, canvas.width / 22, canvas.height / 25);
     }
 
 }

@@ -76,7 +76,8 @@ function background(){
     //! why are the beverages disappearing in the center? tama?
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     handleStars();
-    handleBeverages();
+    // handleBeverages();
+    handlePillows();
     // ctx.clearRect(0, 0, canvas.width, canvas.height);
     // handleStars();
     // // handleBeverages();
