@@ -21,10 +21,10 @@ class Beverage {
     }
 
     draw() {
-        ctx.fillStyle = 'white';
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2)
-        ctx.fill();
+        // ctx.fillStyle = 'white';
+        // ctx.beginPath();
+        // ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2)
+        // ctx.fill();
         ctx.drawImage(beverage, this.x - 11, this.y - 10, canvas.width / 23, canvas.height / 25);
     }
 
@@ -41,7 +41,7 @@ function handleBeverages() {
     }
 
     //to not have too many beverages for performance
-    if (beverageArray.length > 100) {
+    if (beverageArray.length > 300) {
         beverageArray.pop(beverageArray[0])
     }
 

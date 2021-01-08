@@ -44,7 +44,7 @@ function handlePillows() {
     }
 
     //to not have too many pillow for performance
-    if (pillowArray.length > 200) {
+    if (pillowArray.length > 300) {
         pillowArray.pop(pillowArray[0])
     }
 

@@ -72,7 +72,7 @@ function handleRocks() {
     }
 
     //to not have too many rock for performance
-    if (rockArray.length > 200) {
+    if (rockArray.length > 300) {
         rockArray.pop(rockArray[0])
     }
 
@@ -84,8 +84,16 @@ function handleRocks() {
                 // healthProgressBar -= 25;
 
                 rockArray[i].counted = true;
-                rockArray.splice(i, 1)
+                rockArray.splice(i, 1);
+
+                if (mode === 'unlimited') {
+                    damage += 1000;
+                    // console.log('rocks unl damage', damage)
+                    // healthProgressBar.level = life;
+                }
             }
+            
+            
 
         }
     }

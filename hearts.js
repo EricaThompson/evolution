@@ -48,16 +48,20 @@ function handleHearts() {
     for (let i = 0; i < heartArray.length; i++) {
         //collision
         if (heartArray[i].distance < heartArray[i].radius + tama.radius) {
-            if (!heartArray[i].counted) {
+            if (!heartArray[i].counted ) {
                 love += 10;
                 loveProgressBar.value += 10;
                 heartArray[i].counted = true;
                 heartArray.splice(i, 1)
 
-                if (level > 0){
+                if (level > 0 || mode == 'unlimited'){
                     life += 10;
                     healthProgressBar.level += 10;
                 }
+
+                // if (mode === 'unlimited'){
+                //     love += 10
+                // }
 
                 // if (level > 0 && level < 3){
                     
