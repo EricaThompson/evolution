@@ -99,7 +99,10 @@ html {
     /* right: 50%;
     translate: 50%, 50%; */
     background-color: #002554;
+    height: 100%;
 }
+
+
 
 p {
     margin: 10px 0;
@@ -108,7 +111,7 @@ p {
 .text {
     /* padding: 10px; */
     position: absolute;
-    font-size: 7vh;
+    font-size: 5vw;
     width: 60vw;
     height: 70vh;
     left: 20%;
@@ -412,4 +415,12 @@ button {
     0%{background-position:0% 50%}
     50%{background-position:100% 50%}
     100%{background-position:0% 50%}
+}
+
+/* Large screens ----------- */
+@media only screen and (min-width : 1324px) {
+    .break {
+        display: none;
+    }
+/* Styles */
 }
