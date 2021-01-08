@@ -38,7 +38,10 @@ html {
 }
 
 .level-0 {
-    background-image: none;
+    background-image: url('../src/images/level-0.jpg');
+    background-repeat: no-repeat;
+    background-size: 200vw, 90vh;
+    background-color: transparent;
 }
 
 .level-1 {
@@ -184,8 +187,8 @@ button {
     z-index: 200;
     color: white;
     font-size: 10px;
-    margin-left: 5vw;
-    margin-top: 7.5vh;
+    left: 7vw;
+    top: 6.5vh;
     padding-left: 6px;
     padding-top: 3px;
     box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
@@ -251,16 +254,18 @@ button {
     border-radius:30px;
     min-width:1vw;
     max-width:15vw;
-    min-height:13vh;
+    min-height:8vh;
     /* margin:20vw; */
-    position:relative;
+    position: relative;
     align-items:center;
     justify-content:center;
     text-align:center;
     font-family: 'Roboto', sans-serif;
     opacity: .5;
-    margin-top: 20vh;
+    margin-top: 40vh;
     margin-left: 28vw;
+    font-weight: bolder;
+    /* padding: 0px; */
 
     /* display: none; */
 }
@@ -272,6 +277,7 @@ button {
     display:block;
     position:absolute;
     z-index:-1;
+
 }
 
 .helper:before {
@@ -292,9 +298,22 @@ button {
             -5px 25px 0 -10px #fff;
 }
 
+.game-over {
+    top: -30vh;
+    left: 20vw;
+    padding: 20px;
+    font-weight: bolder;
+}
 
 .copy {
     color:rgba(0, 255, 221, 0.2)
+}
+
+.try-again {
+    position: absolute;
+    z-index: 200;
+    bottom: 15vh;
+    left: 40vw;
 }
 
 .disappear {
