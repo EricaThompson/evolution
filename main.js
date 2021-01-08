@@ -73,8 +73,17 @@ function background(){
     if (gameStarted) {
         return;
     }
+    
+    
     //! why are the beverages disappearing in the center? tama?
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    // handleHearts();
+    // handleBeverages();
+    // handlePillows();
+    // tama.update();
+    // tama.draw(); 
+    // level = 2;
+
     handleStars();
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     handleStars();

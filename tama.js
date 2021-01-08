@@ -7,6 +7,10 @@ class Tama {
         this.height = canvas.height / 20;
         this.weight = .5;
         this.radius = 7;
+        
+        // if(level > 1){
+        //     this.radius = 20
+        // }
     }
 
     update(){
@@ -32,16 +36,27 @@ class Tama {
 
     draw(){
         // hitbox
-        ctx.fillStyle = 'white  ';
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2)
-        ctx.fill();
+        // ctx.fillStyle = 'white  ';
+        // ctx.beginPath();
+        // ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2)
+        // ctx.fill();
         const tama = new Image();
         if (level < 2) {
+            //hitbox
+            // ctx.fillStyle = 'white  ';
+            // ctx.beginPath();
+            // ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2)
+            // ctx.fill();
             tama.src = '/src/images/TAMA.png';
             ctx.drawImage(tama, this.x - 10, this.y - 11, canvas.height / 20, 20);
         }
         if (level >= 2){
+            //hitbox
+            this.radius = 18;
+            // ctx.fillStyle = 'white  ';
+            // ctx.beginPath();
+            // ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2)
+            // ctx.fill();
             tama.src = '/src/images/ASTRONAUT.png';
             ctx.drawImage(tama, this.x - 50, this.y - 50, canvas.height / 5, canvas.width / 5);
         } 

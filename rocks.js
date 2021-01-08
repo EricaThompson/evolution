@@ -47,10 +47,10 @@ class Rock {
 
     draw() {
         //hitbox
-        ctx.fillStyle = 'red';
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2)
-        ctx.fill();
+        // ctx.fillStyle = 'white';
+        // ctx.beginPath();
+        // ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2)
+        // ctx.fill();
 
         ctx.drawImage(rockImage, this.frameX * this.spriteWidth, this.frameY * this.spriteHeight, this.spriteWidth, this.spriteHeight, this.x - 10, this.y - 11, canvas.width / 18 , canvas.height / 20)
         //old rock

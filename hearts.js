@@ -1,4 +1,3 @@
-
 const heartArray = [];
 const heart = new Image();
 heart.src = '/src/images/HEART.png';
@@ -7,7 +6,7 @@ class Heart {
     constructor() {
         this.x = canvas.width;
         this.y = Math.random() * canvas.height;
-        this.radius = 10;
+        this.radius = 8;
         this.speed = Math.random() * 5 + 1;
         this.distance;
         this.counted = false;
@@ -22,13 +21,11 @@ class Heart {
 
     draw() {
         //hitbox
-        // ctx.fillStyle = 'red';
+        // ctx.fillStyle = 'white';
         // ctx.beginPath();
         // ctx.arc(this.x + 10, this.y + 10, this.radius, 0, Math.PI * 2)
         // ctx.fill();
-
-        
-        ctx.drawImage(heart, this.x, this.y, canvas.width / 26, canvas.height / 22 );
+        ctx.drawImage(heart, this.x - 2, this.y + 1, canvas.width / 26, canvas.height / 22 );
     }
 
 }

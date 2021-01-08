@@ -6,7 +6,7 @@ class Beverage {
     constructor() {
         this.x = canvas.width;
         this.y = Math.random() * canvas.height;
-        this.radius = 25;
+        this.radius = 7;
         this.speed = Math.random() * 5 + 1;
         this.distance;
         this.counted = false;
@@ -21,8 +21,11 @@ class Beverage {
     }
 
     draw() {
-        
-        ctx.drawImage(beverage, this.x, this.y, canvas.width / 23, canvas.height / 25);
+        ctx.fillStyle = 'white';
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2)
+        ctx.fill();
+        ctx.drawImage(beverage, this.x - 11, this.y - 10, canvas.width / 23, canvas.height / 25);
     }
 
 }

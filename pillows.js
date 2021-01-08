@@ -6,10 +6,9 @@ class Pillow {
     constructor() {
         this.x = canvas.width;
         this.y = Math.random() * canvas.height;
-        this.radius = 30;
+        this.radius = 8;
         this.speed = Math.random() * 5 + 1;
         this.distance;
-        this.color = 'hsla(' + hue + ', 100%, 50%, 0.8)';
         this.counted = false;
     }
 
@@ -21,6 +20,11 @@ class Pillow {
     }
 
     draw() {
+        //hitbox
+        // ctx.fillStyle = 'white';
+        // ctx.beginPath();
+        // ctx.arc(this.x + 14, this.y + 8, this.radius, 0, Math.PI * 2)
+        // ctx.fill();
         ctx.drawImage(pillow, this.x, this.y, canvas.width / 22, canvas.height / 25);
     }
 
