@@ -2,7 +2,8 @@ const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 const startBtn = document.querySelector('.start-button')
 const welcome = document.querySelector('.welcome');
-const gameOverText = document.querySelector('.game-over');
+const gameOverContainer = document.querySelector('.game-over')
+const gameOverText = document.querySelector('.game-over-text');
 const tryAgain = document.querySelector('.try-again');
 const congrats = document.querySelector('.congrats');
 
@@ -57,7 +58,7 @@ gradient.addColorStop('1', '#CFE3CB');
 
 
 function background(){
-    gameOverText.classList.add('disappear')
+    tryAgain.classList.add('disappear')
     if (gameStarted) {
         return;
     }
@@ -185,7 +186,7 @@ function animate(){
         congrats.classList.remove('disappear')
         ctx.fillStyle = gradient;
         ctx.fillText('🎉', 10, 45)
-        gameOverText.classList.remove('disappear')
+        tryAgain.classList.remove('disappear')
 
 
 
@@ -246,10 +247,10 @@ function animate(){
     // ctx.fillStyle = gradient;
     
     // ctx.fillRect(25, 69, (love / 100) * 100, 5);
-    //! this gameover
+
     if (handleGameOver()){
         gameOver = true;
-        gameOverText.classList.remove('disappear')
+        tryAgain.classList.remove('disappear')
         return;
     }
     requestAnimationFrame(animate);
@@ -274,10 +275,10 @@ function handleAge(){
 function addStats(){
     window.addEventListener('keydown', (e) => {
         if (e.code === "KeyL") {
-            love += 10
-            life += 10
-            rest += 10
-            thirst += 10
+            love += 1
+            life += 1
+            rest += 1
+            thirst += 1
         }
         
     })
@@ -288,19 +289,11 @@ function addStats(){
 
 if (!gameStarted) background();
 
-if (gameOver) gameOverText.classList.remove('disappear')
+if (gameOver) tryAgain.classList.remove('disappear')
 
 //space bar players
 window.addEventListener('keydown', function(e){
     if ((e.code === "Space" && !gameStarted) ) {
-        // console.log('pressed')
-        gameStarted = true; 
-        gameOver = false;
-        animate()
-        // handleEndBackground()
-    } 
-
-    if (e.code === "Space" && gameOver) {
         frame = 0;
         rest = 25;
         thirst = 25;
@@ -312,9 +305,27 @@ window.addEventListener('keydown', function(e){
         life = 1;
         gameStarted = true;
         gameOver = false;
-        gameOverText.classList.add('disappear')
+        tryAgain.classList.add('disappear')
+        gameOverContainer.classList.add('disappear')
         animate()
-    }
+    } 
+
+    // if (e.code === "Space" && gameOver) {
+    //     frame = 0;
+    //     rest = 25;
+    //     thirst = 25;
+    //     love = 25;
+    //     gamespeed = 2;
+    //     feeling = '🙂';
+    //     damage = 0;
+    //     // let life = 100;
+    //     life = 1;
+    //     gameStarted = true;
+    //     gameOver = false;
+    //     tryAgain.classList.add('disappear')
+    //     gameOverContainer.classList.add('disappear')
+    //     animate()
+    // }
 })
 
 //click players
@@ -343,7 +354,8 @@ tryAgain.addEventListener('click', function(){
         life = 1;
         gameStarted = true;
         gameOver = false;
-        gameOverText.classList.add('disappear')
+        tryAgain.classList.add('disappear')
+        gameOverContainer.classList.add('disappear')
         animate()
     }
 
@@ -553,20 +565,20 @@ function handleDecline(){
     }
 
     // if (level > 0 && frame % 50 === 0) {
-    // }
-
-
-
-
-    
+    // } 
 }
+
+// gameOverText.innerHTML = 'Your heart was broken! Try again!';
+
 
 function handleGameOver(){
     if (level === 0){
         if (love <= 0) {
-            ctx.fillStyle = '#DBBC98';
-            ctx.fillText('Your heart was broken! Try again!', 160, canvas.height / 2 - 10);
+            // ctx.fillStyle = '#DBBC98';
+            // ctx.fillText('Your heart was broken! Try again!', 160, canvas.height / 2 - 10);
             tryAgain.classList.remove('disappear')
+            gameOverContainer.classList.remove('disappear')
+            gameOverText.innerHTML = 'my heart is broken! try again!';
             return true;
         }
     }
