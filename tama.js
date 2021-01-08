@@ -1,12 +1,12 @@
 class Tama {
     constructor(){
-        this.x = 150;
+        this.x = 200;
         this.y = 200;
         this.vy = 0;
         this.width = canvas.width / 30;
         this.height = canvas.height / 20;
         this.weight = .5;
-        this.radius = 8;
+        this.radius = 7;
     }
 
     update(){
@@ -31,15 +31,15 @@ class Tama {
     }
 
     draw(){
-        //hitbox
-        // ctx.fillStyle = 'white  ';
-        // ctx.beginPath();
-        // ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2)
-        // ctx.fill();
+        // hitbox
+        ctx.fillStyle = 'white  ';
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2)
+        ctx.fill();
         const tama = new Image();
         if (level < 2) {
             tama.src = '/src/images/TAMA.png';
-            ctx.drawImage(tama, this.x - 10, this.y - 10, canvas.height / 20, 20);
+            ctx.drawImage(tama, this.x - 10, this.y - 11, canvas.height / 20, 20);
         }
         if (level >= 2){
             tama.src = '/src/images/ASTRONAUT.png';
