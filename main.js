@@ -73,21 +73,28 @@ function background(){
     if (gameStarted) {
         return;
     }
-
+    //! why are the beverages disappearing in the center? tama?
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     handleStars();
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    handleStars();
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    handleStars();
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    handleStars();
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    handleStars();
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    handleStars();
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    handleStars();
+    handleBeverages();
+    // ctx.clearRect(0, 0, canvas.width, canvas.height);
+    // handleStars();
+    // // handleBeverages();
+    // ctx.clearRect(0, 0, canvas.width, canvas.height);
+    // handleStars();
+    // // handleBeverages();
+    // ctx.clearRect(0, 0, canvas.width, canvas.height);
+    // handleStars();
+    // // handleBeverages();
+    // ctx.clearRect(0, 0, canvas.width, canvas.height);
+    // handleStars();
+    // // handleBeverages();
+    // ctx.clearRect(0, 0, canvas.width, canvas.height);
+    // handleStars();
+    // // handleBeverages();
+    // ctx.clearRect(0, 0, canvas.width, canvas.height);
+    // handleStars();
+    // handleBeverages();
     requestAnimationFrame(background);
     // angle+=0.1;
     frame++;

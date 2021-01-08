@@ -22,7 +22,7 @@ class Beverage {
 
     draw() {
         
-        ctx.drawImage(beverage, this.x, this.y, canvas.height / 20, 15);
+        ctx.drawImage(beverage, this.x, this.y, canvas.width / 23, canvas.height / 25);
     }
 
 }
