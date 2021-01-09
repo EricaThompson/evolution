@@ -2,7 +2,7 @@
 
 Evolution is an original game concept inspired by Tamagotchi and Flappy Bird using only Vanilla JS, HTML Canvas and CSS.
 
-A live link to the site will be hosted on github pages: ()[here].
+A live link to the site will be hosted on github pages: [evolution](https://ericathompson.github.io/evolution/).
 
 ## Technologies
 This game was created entirely with Vanilla JS without out the use of any frameworks. All graphics are made and rendered by JS and CSS.
