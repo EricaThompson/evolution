@@ -1,6 +1,6 @@
 const starsArray = [];
 const bang = new Image();
-bang.src = '/src/images/star.png';
+bang.src = './src/images/star.png';
 
 class Star {
     constructor(){
