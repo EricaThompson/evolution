@@ -3,6 +3,9 @@ const ctx = canvas.getContext('2d');
 const campaignBtn = document.querySelector('.campaign')
 const unlimitedBtn = document.querySelector('.unlimited')
 
+
+
+
 const welcome = document.querySelector('.welcome');
 const gameOverContainer = document.querySelector('.game-over')
 const gameOverText = document.querySelector('.game-over-text');
@@ -11,21 +14,21 @@ const congrats = document.querySelector('.congrats');
 const scorecard = document.querySelector('.scorecard');
 const loveScore = document.querySelector('.love-score');
 const age = document.querySelector('.year-count');
-const helper = document.querySelector('.helper')
-const loveHelper = document.querySelector('.love-helper')
-const healthHelper = document.querySelector('.health-helper')
-const restHelper = document.querySelector('.rest-helper')
-const thirstHelper = document.querySelector('.thirst-helper')
-const evolver = document.querySelector('.evolver')
-const healthBar = document.querySelector('.health')
+const helper = document.querySelector('.helper');
+const loveHelper = document.querySelector('.love-helper');
+const healthHelper = document.querySelector('.health-helper');
+const restHelper = document.querySelector('.rest-helper');
+const thirstHelper = document.querySelector('.thirst-helper');
+const evolver = document.querySelector('.evolver');
+const healthBar = document.querySelector('.health');
 const loveProgressBar = document.querySelector('#love-progress');
-const healthProgressBar = document.querySelector('#health-progress')
-const restBar = document.querySelector('.rest')
-const restProgressBar = document.querySelector('#rest-progress')
-const thirstBar = document.querySelector('.thirst')
-const thirstProgressBar = document.querySelector('#thirst-progress')
+const healthProgressBar = document.querySelector('#health-progress');
+const restBar = document.querySelector('.rest');
+const restProgressBar = document.querySelector('#rest-progress');
+const thirstBar = document.querySelector('.thirst');
+const thirstProgressBar = document.querySelector('#thirst-progress');
 const scoreBox = document.querySelector('.score');
-const scoreNum = document.querySelector('.score-num')
+const scoreNum = document.querySelector('.score-num');
 // healthHelper.classList.add('disappear')
 // thirstHelper.classList.add('disappear')
 // loveHelper.classList.add('disappear')
@@ -56,7 +59,17 @@ let year = 0;
 let time = 0;
 let mode = '';
 let suddenEnd = false;
-let score;
+// let score;
+
+const scoreDisplay = document.querySelector('.score-display');
+// window.localStorage.setItem('highScore', 0);
+let highScore = localStorage.getItem('highScore')
+// if (isNaN(highScore)) {
+//     highScore = '?';
+// }
+
+scoreDisplay.innerHTML = highScore;
+console.log(highScore)
 
 
 
@@ -148,6 +161,8 @@ function unlimited(){
     handleHealthHelper();
     handleDecline();
 
+    
+    scoreDisplay.innerHTML = highScore;
     if (handleGameOver()) {
         gameOver = true;
         tryAgain.classList.remove('disappear')
@@ -251,9 +266,10 @@ function campaign(){
     ctx.fillStyle = gradient;
 
 
-
+    scoreDisplay.innerHTML = highScore;
     handleDecline();
     if (handleGameOver()){
+        scoreDisplay.innerHTML = highScore;
         gameOver = true;
         tryAgain.classList.remove('disappear')
         
@@ -274,12 +290,25 @@ function campaign(){
 function handleAge(){
     if (mode === "unlimited" && life > 80 && love > 80 && thirst > 80 && rest > 80 && frame % 50 === 0) {
         year++;
+        if (year > parseInt(localStorage.getItem('highScore'))){
+            console.log('handle age unlimited')
+            window.localStorage.setItem('highScore', year.toString());
+            // scoreDisplay.innerHtml = year
+            scoreDisplay.innerHTML = highScore;
+        }
     }
     // console.log('age: ',year)
     if (mode === 'campaign'){
         if (level === 0 && love > 80 && frame % 50 === 0){
             year++
+            if (year > parseInt(localStorage.getItem('highScore'))) {
+                console.log('handle age campaign')
+                window.localStorage.setItem('highScore', year.toString());
+                // scoreDisplay.innerHtml = year
+                scoreDisplay.innerHTML = highScore;
+            }
         }
+
     }
 }
 
@@ -373,9 +402,11 @@ tryAgain.addEventListener('click', function(){
         gameOverContainer.classList.add('disappear')
 
         if (mode === 'campaign'){
+            window.location.reload();
             year = 0;
             campaign()
         } else {
+            window.location.reload();
             year = 0;
             unlimited()
         }
@@ -665,6 +696,10 @@ function handleDecline(){
 
 
 function handleGameOver(){
+    if (year > parseInt(localStorage.getItem('highScore'))) {
+        localStorage.setItem('highScore', year.toString());
+        scoreDisplay.innerHtml = year
+    }
 
     if (level >= 0 || mode === 'unlimited'){
         if (love <= 0) {
