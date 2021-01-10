@@ -1,6 +1,6 @@
 const heartArray = [];
 const heart = new Image();
-heart.src = '/src/images/HEART.png';
+heart.src = './public/src/images/HEART.png';
 
 class Heart {
     constructor() {

@@ -1,6 +1,6 @@
 const beverageArray = [];
 const beverage = new Image();
-beverage.src = '/src/images/BEVERAGE.png';
+beverage.src = './public/src/images/BEVERAGE.png';
 
 class Beverage {
     constructor() {

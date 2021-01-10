@@ -1,6 +1,6 @@
 const rockArray = [];
 const rockImage = new Image();
-rockImage.src = '/src/images/rolling-rock.png'
+rockImage.src = './public/src/images/rolling-rock.png'
 
 class Rock {
     constructor() {

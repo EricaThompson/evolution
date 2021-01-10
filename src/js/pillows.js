@@ -1,6 +1,6 @@
 const pillowArray = [];
 const pillow = new Image();
-pillow.src = '/src/images/PILLOW.png';
+pillow.src = '.public/src/images/PILLOW.png';
 
 class Pillow {
     constructor() {

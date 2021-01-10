@@ -22,8 +22,7 @@ class Star {
         const bang = new Image();
         bang.src = './public/src/images/STAR.png';
         ctx.drawImage(bang, this.x, this.y, 30, 30);
-        // bang.onload = function(){
-        // }
+
     }
 
 }
