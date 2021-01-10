@@ -62,13 +62,22 @@ let suddenEnd = false;
 // let score;
 
 const scoreDisplay = document.querySelector('.score-display');
-// window.sessionStorage.setItem('highScore', 0);
-let highScore = sessionStorage.getItem('highScore')
-// if (isNaN(highScore)) {
-//     highScore = '?';
+
+let highScore = parseInt(sessionStorage.getItem('highScore'))
+if (isNaN(highScore)) {
+    highScore = '?';
+}
+
+// if (year > highScore){
+//     window.sessionStorage.setItem('highScore', year.toString());
 // }
 
-scoreDisplay.innerHTML = highScore;
+
+if (year < highScore){
+    scoreDisplay.innerHTML = highScore;
+} else {
+    scoreDisplay.innerHTML = year;
+}
 // console.log(highScore)
 
 
@@ -214,7 +223,7 @@ function campaign(){
 
     if (level === 1){
         healthBar.classList.remove('disappear')
-
+        age.innerHTML = year;
         canvas.classList.add('level-1')
         handleHearts();
         handleStars();
@@ -226,7 +235,9 @@ function campaign(){
     }
 
     if (level === 2){
+        age.innerHTML = year;
         //background
+
         canvas.classList.add('level-2')
         restBar.classList.remove('disappear')
         thirstBar.classList.remove('disappear')
@@ -290,23 +301,46 @@ function campaign(){
 function handleAge(){
     if (mode === "unlimited" && life > 80 && love > 80 && thirst > 80 && rest > 80 && frame % 50 === 0) {
         year++;
-        if (year > parseInt(sessionStorage.getItem('highScore'))){
-            console.log('handle age unlimited')
-            sessionStorage.setItem('highScore', year.toString());
-            // scoreDisplay.innerHtml = year
-            scoreDisplay.innerHTML = highScore;
-        }
+        // if (year > parseInt(sessionStorage.getItem('highScore'))){
+        //     // console.log('handle age unlimited')
+        //     sessionStorage.setItem('highScore', year.toString());
+        //     // scoreDisplay.innerHtml = year
+        //     scoreDisplay.innerHTML = highScore;
+        // }
     }
     // console.log('age: ',year)
     if (mode === 'campaign'){
         if (level === 0 && love > 80 && frame % 50 === 0){
             year++
+            console.log('0')
             if (year > parseInt(sessionStorage.getItem('highScore'))) {
                 console.log('handle age campaign')
                 sessionStorage.setItem('highScore', year.toString());
                 // scoreDisplay.innerHtml = year
                 scoreDisplay.innerHTML = highScore;
             }
+        }
+
+        if (level === 1 && love > 80 && life > 80 && frame % 50 === 0) {
+            year++
+            console.log('1')
+            if (year > parseInt(sessionStorage.getItem('highScore'))) {
+                console.log('handle age campaign')
+                sessionStorage.setItem('highScore', year.toString());
+                // scoreDisplay.innerHtml = year
+                scoreDisplay.innerHTML = highScore;
+            }
+        }
+
+        if (level === 2 && love > 80 && life > 80 && rest > 80 && thirst > 80 && frame % 50 === 0) {
+            year++
+            console.log('1')
+            // if (year > parseInt(sessionStorage.getItem('highScore'))) {
+            //     console.log('handle age campaign')
+            //     sessionStorage.setItem('highScore', year.toString());
+            //     // scoreDisplay.innerHtml = year
+            //     scoreDisplay.innerHTML = highScore;
+            // }
         }
 
     }

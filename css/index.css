@@ -424,7 +424,7 @@ button {
 .links {
     display: flex;
     position: absolute;
-    top: -.5vh;
+    top: 1vh;
     left: 6vw;
     align-items: center;
     font-family: 'Roboto', sans serif;
@@ -433,9 +433,9 @@ button {
 }
 
 .site {
-    padding-bottom: .5vh;
+    /* padding-bottom: .5vh; */
     padding-left: 4px;
-    font-size: 2vh;
+    font-size: 1vh;
 }
 
 
