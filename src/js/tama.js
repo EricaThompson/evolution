@@ -47,7 +47,7 @@ class Tama {
             // ctx.beginPath();
             // ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2)
             // ctx.fill();
-            tama.src = '/src/images/TAMA.png';
+            tama.src = './public/src/images/TAMA.png';
             ctx.drawImage(tama, this.x - 10, this.y - 11, canvas.height / 20, 20);
         }
         if (level >= 2){
@@ -57,7 +57,7 @@ class Tama {
             // ctx.beginPath();
             // ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2)
             // ctx.fill();
-            tama.src = '/src/images/ASTRONAUT.png';
+            tama.src = './public/src/images/ASTRONAUT.png';
             ctx.drawImage(tama, this.x - 50, this.y - 50, canvas.height / 5, canvas.width / 5);
         } 
             
