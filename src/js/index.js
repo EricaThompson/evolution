@@ -62,8 +62,8 @@ let suddenEnd = false;
 // let score;
 
 const scoreDisplay = document.querySelector('.score-display');
-// window.localStorage.setItem('highScore', 0);
-let highScore = localStorage.getItem('highScore')
+// window.sessionStorage.setItem('highScore', 0);
+let highScore = sessionStorage.getItem('highScore')
 // if (isNaN(highScore)) {
 //     highScore = '?';
 // }
@@ -290,9 +290,9 @@ function campaign(){
 function handleAge(){
     if (mode === "unlimited" && life > 80 && love > 80 && thirst > 80 && rest > 80 && frame % 50 === 0) {
         year++;
-        if (year > parseInt(localStorage.getItem('highScore'))){
+        if (year > parseInt(sessionStorage.getItem('highScore'))){
             console.log('handle age unlimited')
-            window.localStorage.setItem('highScore', year.toString());
+            window.sessionStorage.setItem('highScore', year.toString());
             // scoreDisplay.innerHtml = year
             scoreDisplay.innerHTML = highScore;
         }
@@ -301,9 +301,9 @@ function handleAge(){
     if (mode === 'campaign'){
         if (level === 0 && love > 80 && frame % 50 === 0){
             year++
-            if (year > parseInt(localStorage.getItem('highScore'))) {
+            if (year > parseInt(sessionStorage.getItem('highScore'))) {
                 console.log('handle age campaign')
-                window.localStorage.setItem('highScore', year.toString());
+                window.sessionStorage.setItem('highScore', year.toString());
                 // scoreDisplay.innerHtml = year
                 scoreDisplay.innerHTML = highScore;
             }
@@ -696,8 +696,8 @@ function handleDecline(){
 
 
 function handleGameOver(){
-    if (year > parseInt(localStorage.getItem('highScore'))) {
-        localStorage.setItem('highScore', year.toString());
+    if (year > parseInt(sessionStorage.getItem('highScore'))) {
+        sessionStorage.setItem('highScore', year.toString());
         scoreDisplay.innerHtml = year
     }
 
