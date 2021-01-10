@@ -20,10 +20,10 @@ class Star {
     draw(){
 
         const bang = new Image();
-        bang.src = '/src/images/STAR.png';
-        bang.src.onload = function(){
-            ctx.drawImage(bang, this.x, this.y, 30, 30);
-        }
+        bang.src = './public/src/images/STAR.png';
+        ctx.drawImage(bang, this.x, this.y, 30, 30);
+        // bang.onload = function(){
+        // }
     }
 
 }
