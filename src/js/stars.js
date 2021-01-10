@@ -1,6 +1,6 @@
-const starsArray = [];
-const bang = new Image();
-bang.src = './src/images/STAR.png';
+// const starsArray = [];
+// const bang = new Image();
+// bang.src = './src/images/STAR.png';
 
 class Star {
     constructor(){
@@ -18,9 +18,12 @@ class Star {
     }
 
     draw(){
-        // const bang = new Image();
-        // bang.src = '/src/images/star.png';
-        ctx.drawImage(bang, this.x, this.y, 30, 30);
+
+        const bang = new Image();
+        bang.src = '/src/images/STAR.png';
+        bang.src.onload = function(){
+            ctx.drawImage(bang, this.x, this.y, 30, 30);
+        }
     }
 
 }
