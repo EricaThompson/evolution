@@ -301,12 +301,12 @@ function campaign(){
 function handleAge(){
     if (mode === "unlimited" && life > 80 && love > 80 && thirst > 80 && rest > 80 && frame % 50 === 0) {
         year++;
-        // if (year > parseInt(sessionStorage.getItem('highScore'))){
-        //     // console.log('handle age unlimited')
-        //     sessionStorage.setItem('highScore', year.toString());
-        //     // scoreDisplay.innerHtml = year
-        //     scoreDisplay.innerHTML = highScore;
-        // }
+        if (year > parseInt(sessionStorage.getItem('highScore'))){
+            // console.log('handle age unlimited')
+            sessionStorage.setItem('highScore', year.toString());
+            // scoreDisplay.innerHtml = year
+            scoreDisplay.innerHTML = highScore;
+        }
     }
     // console.log('age: ',year)
     if (mode === 'campaign'){
@@ -314,7 +314,7 @@ function handleAge(){
             year++
             console.log('0')
             if (year > parseInt(sessionStorage.getItem('highScore'))) {
-                console.log('handle age campaign')
+                // console.log('handle age campaign')
                 sessionStorage.setItem('highScore', year.toString());
                 // scoreDisplay.innerHtml = year
                 scoreDisplay.innerHTML = highScore;
@@ -325,7 +325,7 @@ function handleAge(){
             year++
             console.log('1')
             if (year > parseInt(sessionStorage.getItem('highScore'))) {
-                console.log('handle age campaign')
+                // console.log('handle age campaign')
                 sessionStorage.setItem('highScore', year.toString());
                 // scoreDisplay.innerHtml = year
                 scoreDisplay.innerHTML = highScore;
@@ -334,13 +334,13 @@ function handleAge(){
 
         if (level === 2 && love > 80 && life > 80 && rest > 80 && thirst > 80 && frame % 50 === 0) {
             year++
-            console.log('1')
-            // if (year > parseInt(sessionStorage.getItem('highScore'))) {
-            //     console.log('handle age campaign')
-            //     sessionStorage.setItem('highScore', year.toString());
-            //     // scoreDisplay.innerHtml = year
-            //     scoreDisplay.innerHTML = highScore;
-            // }
+            // console.log('1')
+            if (year > parseInt(sessionStorage.getItem('highScore'))) {
+                // console.log('handle age campaign')
+                sessionStorage.setItem('highScore', year.toString());
+                // scoreDisplay.innerHtml = year
+                scoreDisplay.innerHTML = highScore;
+            }
         }
 
     }
