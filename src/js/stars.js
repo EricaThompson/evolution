@@ -1,4 +1,4 @@
-// const starsArray = [];
+const starsArray = [];
 // const bang = new Image();
 // bang.src = './src/images/STAR.png';
 
