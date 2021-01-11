@@ -17,7 +17,7 @@ There are multiple levels of play and difficulty.
 You can decide between two modes of play, either campaign which is more like Tamagotchi or unlimited which is more like Flappy bird.
 
 ## Code Snippets
-When 
+
 ```js
 function handleEvolution(){
         if (level === 0){   
