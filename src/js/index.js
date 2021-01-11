@@ -72,14 +72,12 @@ if (isNaN(highScore)) {
 //     window.sessionStorage.setItem('highScore', year.toString());
 // }
 
-
-if (year < highScore){
-    scoreDisplay.innerHTML = highScore;
-} else {
-    scoreDisplay.innerHTML = year;
-}
-// console.log(highScore)
-
+//! highscore
+// if (year < highScore){
+//     scoreDisplay.innerHTML = highScore;
+// } else {
+//     scoreDisplay.innerHTML = year;
+// }
 
 
 healthProgressBar.value = life;
@@ -152,7 +150,8 @@ function unlimited(){
     restBar.classList.remove('disappear')
     thirstBar.classList.remove('disappear')
     healthBar.classList.remove('disappear')
-    scoreNum.innerHTML = year;
+    //! highscore
+    // scoreNum.innerHTML = year;
 
     handleExhaust();
     tama.update();
@@ -170,11 +169,12 @@ function unlimited(){
     handleHealthHelper();
     handleDecline();
 
-    
-    scoreDisplay.innerHTML = highScore;
+    //! highscore
+    // scoreDisplay.innerHTML = highScore;
     if (handleGameOver()) {
         gameOver = true;
         tryAgain.classList.remove('disappear')
+        
         scoreNum.innerHTML = year;
         return;
     }
@@ -205,6 +205,7 @@ function campaign(){
     canvas.classList.remove('level-3')
     thirstBar.classList.add('disappear')
     restBar.classList.add('disappear')
+  
     scoreNum.innerHTML = year;
     
 
@@ -276,11 +277,11 @@ function campaign(){
     
     ctx.fillStyle = gradient;
 
-
-    scoreDisplay.innerHTML = highScore;
+    //! highscore
+    // scoreDisplay.innerHTML = highScore;
     handleDecline();
     if (handleGameOver()){
-        scoreDisplay.innerHTML = highScore;
+        // scoreDisplay.innerHTML = highScore;
         gameOver = true;
         tryAgain.classList.remove('disappear')
         
@@ -312,7 +313,7 @@ function handleAge(){
     if (mode === 'campaign'){
         if (level === 0 && love > 80 && frame % 50 === 0){
             year++
-            console.log('0')
+            // console.log('0')
             if (year > parseInt(sessionStorage.getItem('highScore'))) {
                 // console.log('handle age campaign')
                 sessionStorage.setItem('highScore', year.toString());
