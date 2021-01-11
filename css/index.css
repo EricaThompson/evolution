@@ -459,6 +459,30 @@ a {
     100%{background-position:0% 50%}
 }
 
+.about {
+    position: absolute;
+    top: 20vh;
+    left: 26%;
+    z-index: 200;
+    border-radius: 4px;
+    text-align: center;
+    width: 50vw;
+    font-family: "Roboto", sans serif;
+    font-size: 3vw;
+    color: rgb(53, 53, 53);
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+
+}
+
+.x {
+    position: absolute;
+    top: 0vh;
+    right: 7%;
+    color: rgb(167, 107, 107);
+    cursor: pointer;
+}
+
 /* Large screens ----------- */
 @media only screen and (min-width : 1324px) {
     .break {

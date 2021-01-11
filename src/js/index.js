@@ -29,6 +29,32 @@ const thirstBar = document.querySelector('.thirst');
 const thirstProgressBar = document.querySelector('#thirst-progress');
 const scoreBox = document.querySelector('.score');
 const scoreNum = document.querySelector('.score-num');
+
+let aboutView = false
+
+const about = document.querySelector('.about');
+const aboutText = document.querySelector('.about-text');
+const x = document.querySelector('.x')
+aboutText.addEventListener('click', ()=>{
+    if (!aboutView){
+        about.classList.remove('disappear')
+        aboutView = true;
+    } else {
+        about.classList.add('disappear')
+        aboutView = false
+    }
+})
+
+x.addEventListener('click', () => {
+    if (!aboutView) {
+        about.classList.remove('disappear')
+        aboutView = true;
+    } else {
+        about.classList.add('disappear')
+        aboutView = false
+    }
+})
+
 // healthHelper.classList.add('disappear')
 // thirstHelper.classList.add('disappear')
 // loveHelper.classList.add('disappear')
@@ -61,12 +87,13 @@ let mode = '';
 let suddenEnd = false;
 // let score;
 
-const scoreDisplay = document.querySelector('.score-display');
+//!high score
+// const scoreDisplay = document.querySelector('.score-display');
 
-let highScore = parseInt(sessionStorage.getItem('highScore'))
-if (isNaN(highScore)) {
-    highScore = '?';
-}
+// let highScore = parseInt(sessionStorage.getItem('highScore'))
+// if (isNaN(highScore)) {
+//     highScore = '?';
+// }
 
 // if (year > highScore){
 //     window.sessionStorage.setItem('highScore', year.toString());
