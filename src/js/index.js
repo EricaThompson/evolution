@@ -3,9 +3,6 @@ const ctx = canvas.getContext('2d');
 const campaignBtn = document.querySelector('.campaign')
 const unlimitedBtn = document.querySelector('.unlimited')
 
-
-
-
 const welcome = document.querySelector('.welcome');
 const gameOverContainer = document.querySelector('.game-over')
 const gameOverText = document.querySelector('.game-over-text');
@@ -27,6 +24,7 @@ const restBar = document.querySelector('.rest');
 const restProgressBar = document.querySelector('#rest-progress');
 const thirstBar = document.querySelector('.thirst');
 const thirstProgressBar = document.querySelector('#thirst-progress');
+
 const scoreBox = document.querySelector('.score');
 const scoreNum = document.querySelector('.score-num');
 
@@ -87,24 +85,27 @@ let mode = '';
 let suddenEnd = false;
 // let score;
 
-//!high score
-// const scoreDisplay = document.querySelector('.score-display');
+//! high score
+const scoreDisplay = document.querySelector('.score-display');
 
-// let highScore = parseInt(sessionStorage.getItem('highScore'))
-// if (isNaN(highScore)) {
-//     highScore = '?';
-// }
+let highScore = parseInt(window.localStorage.getItem('highScore'))
+if (isNaN(highScore)) {
+    highScore = '?';
+}
 
 // if (year > highScore){
-//     window.sessionStorage.setItem('highScore', year.toString());
+//     window.localStorage.setItem('highScore', year.toString());
 // }
 
-//! highscore
-// if (year < highScore){
-//     scoreDisplay.innerHTML = highScore;
-// } else {
-//     scoreDisplay.innerHTML = year;
-// }
+if (highScore === "?") {
+    window.localStorage.setItem('highScore', year.toString());
+}
+
+if (year < highScore){
+    scoreDisplay.innerHTML = highScore;
+} else {
+    scoreDisplay.innerHTML = year;
+}
 
 
 healthProgressBar.value = life;
@@ -178,7 +179,7 @@ function unlimited(){
     thirstBar.classList.remove('disappear')
     healthBar.classList.remove('disappear')
     //! highscore
-    // scoreNum.innerHTML = year;
+    scoreNum.innerHTML = year;
 
     handleExhaust();
     tama.update();
@@ -197,7 +198,7 @@ function unlimited(){
     handleDecline();
 
     //! highscore
-    // scoreDisplay.innerHTML = highScore;
+    scoreDisplay.innerHTML = highScore;
     if (handleGameOver()) {
         gameOver = true;
         tryAgain.classList.remove('disappear')
@@ -305,10 +306,10 @@ function campaign(){
     ctx.fillStyle = gradient;
 
     //! highscore
-    // scoreDisplay.innerHTML = highScore;
+    scoreDisplay.innerHTML = highScore;
     handleDecline();
     if (handleGameOver()){
-        // scoreDisplay.innerHTML = highScore;
+        scoreDisplay.innerHTML = highScore;
         gameOver = true;
         tryAgain.classList.remove('disappear')
         
@@ -329,9 +330,9 @@ function campaign(){
 function handleAge(){
     if (mode === "unlimited" && life > 80 && love > 80 && thirst > 80 && rest > 80 && frame % 50 === 0) {
         year++;
-        if (year > parseInt(sessionStorage.getItem('highScore'))){
+        if (year > parseInt(window.localStorage.getItem('highScore'))){
             // console.log('handle age unlimited')
-            sessionStorage.setItem('highScore', year.toString());
+            window.localStorage.setItem('highScore', year.toString());
             // scoreDisplay.innerHtml = year
             scoreDisplay.innerHTML = highScore;
         }
@@ -341,9 +342,9 @@ function handleAge(){
         if (level === 0 && love > 80 && frame % 50 === 0){
             year++
             // console.log('0')
-            if (year > parseInt(sessionStorage.getItem('highScore'))) {
+            if (year > parseInt(window.localStorage.getItem('highScore'))) {
                 // console.log('handle age campaign')
-                sessionStorage.setItem('highScore', year.toString());
+                window.localStorage.setItem('highScore', year.toString());
                 // scoreDisplay.innerHtml = year
                 scoreDisplay.innerHTML = highScore;
             }
@@ -351,10 +352,9 @@ function handleAge(){
 
         if (level === 1 && love > 80 && life > 80 && frame % 50 === 0) {
             year++
-            console.log('1')
-            if (year > parseInt(sessionStorage.getItem('highScore'))) {
+            if (year > parseInt(window.localStorage.getItem('highScore'))) {
                 // console.log('handle age campaign')
-                sessionStorage.setItem('highScore', year.toString());
+                window.localStorage.setItem('highScore', year.toString());
                 // scoreDisplay.innerHtml = year
                 scoreDisplay.innerHTML = highScore;
             }
@@ -363,9 +363,9 @@ function handleAge(){
         if (level === 2 && love > 80 && life > 80 && rest > 80 && thirst > 80 && frame % 50 === 0) {
             year++
             // console.log('1')
-            if (year > parseInt(sessionStorage.getItem('highScore'))) {
+            if (year > parseInt(window.localStorage.getItem('highScore'))) {
                 // console.log('handle age campaign')
-                sessionStorage.setItem('highScore', year.toString());
+                window.localStorage.setItem('highScore', year.toString());
                 // scoreDisplay.innerHtml = year
                 scoreDisplay.innerHTML = highScore;
             }
@@ -374,11 +374,6 @@ function handleAge(){
     }
 }
 
-// function handleScore(){
-//     if (frame % 2050 === 0) {
-//         year++;
-//     }
-// }
 
 function addStats(){
     window.addEventListener('keydown', (e) => {
@@ -524,14 +519,10 @@ function skipLevel(){
 
 
 function handleEvolution(){
-    // life > 100 && love > 100 && thirst > 100 && rest > 100
         if (level === 0){   
             if (love >= 100) {
-                // ctx.fillStyle =  '#DBBC98';
-                // ctx.fillText("Press up or click to evolve!", 160, canvas.height / 2 - 10  );
-                evolver.classList.remove('disappear')
-            
-                evolver.addEventListener('click', function (e) {
+                evolver.classList.remove('disappear')           
+                evolver.addEventListener('click', function () {
                     if (!levelStarted){
                         level++;
                         levelStarted = true;
@@ -539,11 +530,7 @@ function handleEvolution(){
                         love = 25
                         thirst = 25
                         rest = 25
-                    }
-
-                    // if (e.code === "ArrowUp" && !levelStarted) {
-                    // }
-                    
+                    }               
                 })
 
                 window.addEventListener('keydown', function(e){
@@ -555,7 +542,6 @@ function handleEvolution(){
                         love = 25
                         thirst = 25
                         rest = 25
-
                     }
                 })
             } else {
@@ -564,20 +550,14 @@ function handleEvolution(){
         }
 
         if (level === 1){
-
             if (love >= 100 && life >= 100) {
                 evolver.classList.remove('disappear')
-
-                evolver.addEventListener('click', function (e) {
+                evolver.addEventListener('click', function () {
                     if (!levelStarted) {
                         level++;
                         levelStarted = true;
                     }
-
-                    // if (e.code === "ArrowUp" && !levelStarted) {
-                    // }
                 })
-
                 window.addEventListener('keydown', function (e) {
                     if (e.code === 'ArrowUp' && !levelStarted) {
                         level++;
@@ -599,11 +579,7 @@ function handleEvolution(){
                         level++;
                         levelStarted = true;
                     }
-
-                    // if (e.code === "ArrowUp" && !levelStarted) {
-                    // }
                 })
-
                 window.addEventListener('keydown', function (e) {
                     if (e.code === 'ArrowUp' && !levelStarted) {
                         level++;
@@ -758,8 +734,8 @@ function handleDecline(){
 
 
 function handleGameOver(){
-    if (year > parseInt(sessionStorage.getItem('highScore'))) {
-        sessionStorage.setItem('highScore', year.toString());
+    if (year > parseInt(window.localStorage.getItem('highScore'))) {
+        window.localStorage.setItem('highScore', year.toString());
         scoreDisplay.innerHtml = year
     }
 
