@@ -96,4 +96,4 @@ function handleEvolution(){
 ```
 
 ## Future Directions
-I would like to get a high score and global high score working.
+I would like to make more levels, powerups and have a global high score.
