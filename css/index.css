@@ -413,14 +413,18 @@ button {
 }
 
 
-
 .try-again {
     position: absolute;
     z-index: 200;
-    bottom: 15vh;
-    left: 45vw;
-    background-color: yell
+    bottom: 13vh;
+    left: 22vw;
+    width: 125px;
+    height: 70px;
+    /* background-color: yellow; */
+    font-size: 25px;
+    /* background-color: #194887; */
 }
+
 
 .disappear {
     display: none;
@@ -487,6 +491,8 @@ a {
     color: rgb(167, 107, 107);
     cursor: pointer;
 }
+
+
 
 /* Large screens ----------- */
 @media only screen and (min-width : 1324px) {
