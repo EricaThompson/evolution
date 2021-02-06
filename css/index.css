@@ -252,6 +252,7 @@ button {
     -webkit-animation: AnimationName 59s ease infinite;
     -moz-animation: AnimationName 59s ease infinite;
     animation: AnimationName 59s ease infinite;
+    padding-top: 10px;
 
 }
 
@@ -421,7 +422,11 @@ button {
     bottom: 13vh;
     left: 22vw;
     width: 125px;
-    height: 70px;
+    height: 40px;
+    padding-top: 10px;
+    /* height: 50px; */
+    /* padding: 15px;
+    padding-top: 10px; */
     /* background-color: yellow; */
     font-size: 25px;
     /* background-color: #194887; */
