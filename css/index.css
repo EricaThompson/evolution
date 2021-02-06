@@ -23,6 +23,7 @@ html {
     height: 400px; */
     /* border: 1px solid hotpink; */
     border-radius: 4px;
+    z-index: -1;
     /* background-color: #cbc9c9; */
 
     /* Tomorrow Night Blue*/
@@ -222,6 +223,10 @@ button {
     -webkit-animation: AnimationName 59s ease infinite;
     -moz-animation: AnimationName 59s ease infinite;
     animation: AnimationName 59s ease infinite;
+}
+
+.year-count  {
+    font-size: 1.5vw;
 }
 
 .score-title {
