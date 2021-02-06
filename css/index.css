@@ -1,6 +1,6 @@
-p {
+/* p {
     margin: 0;
-}
+} */
 
 html {
     background-color: #b6b09c;
@@ -107,6 +107,7 @@ html {
 
 p {
     margin: 10px 0;
+    margin-top: -6px;
 }
 
 .text {
@@ -227,6 +228,7 @@ button {
 
 .year-count  {
     font-size: 1.5vw;
+    
 }
 
 .score-title {
@@ -482,6 +484,10 @@ a {
     background-color: rgb(255, 255, 255);
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 
+}
+
+.about-text {
+    margin-bottom: 50px;
 }
 
 .x {
